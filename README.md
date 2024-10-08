@@ -1,4 +1,4 @@
-# Trip Planner & Expense Recorder App
+# JourneyPro
 
 ****** ADD LOGO ******
 
