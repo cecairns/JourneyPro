@@ -28,18 +28,18 @@ It includes features like automatic currency conversion to help users manage the
 ## Installation
 
 1. Clone the repository:
-
    ```bash
    git clone https://github.com/your_username/trip-planner-app.git
    cd trip-planner-app
-   
+    ```
 2. Install dependncies:
    ```bash
   flutter pub get
+   ```
 3. Run the app:
    ```bash
    flutter run
-
+    ```
 ## License
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
