@@ -1,10 +1,12 @@
 # Trip Planner & Expense Recorder App
 
-![App Screenshot](screenshot.png)
+****** ADD LOGO ******
 
 ## Overview
 
-This FlutterFlow/Dart application allows users to plan trips, record expenses, and explore famous places at their destinations. It includes features like automatic currency conversion to help users manage their travel finances effectively.
+We created this application for our CSC305 class at the University of Rhode Island. 
+This FlutterFlow/Dart application allows users to plan trips, record expenses, and explore famous places at their destinations.
+It includes features like automatic currency conversion to help users manage their travel finances effectively.
 
 ## Features
 
@@ -30,3 +32,17 @@ This FlutterFlow/Dart application allows users to plan trips, record expenses, a
    ```bash
    git clone https://github.com/your_username/trip-planner-app.git
    cd trip-planner-app
+   ```bash
+   flutter pub get
+   ```bash
+   flutter run
+
+## Contributing
+Contributions are welcome! Here's how you can contribute:
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgements
+- Thanks to Flutter and Dart communities for their amazing support and resources
+****** TO BE ADDED ******
