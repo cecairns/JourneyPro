@@ -45,4 +45,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgements
 - Thanks to Flutter and Dart communities for their amazing support and resources
-****** TO BE ADDED ******
+- ****** TO BE ADDED ******
