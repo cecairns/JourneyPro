@@ -34,12 +34,10 @@ It includes features like automatic currency conversion to help users manage the
    
 2. Install dependncies:
    ```
-   flutter pub get ```
-
+   flutter pub get
 3. Run the app:
    ```
-   flutter run ```
-   
+   flutter run
 ## License
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
