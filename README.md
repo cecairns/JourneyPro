@@ -32,17 +32,15 @@ It includes features like automatic currency conversion to help users manage the
    ```bash
    git clone https://github.com/your_username/trip-planner-app.git
    cd trip-planner-app
-   ```bash
+   
    flutter pub get
-   ```bash
+   
    flutter run
 
-## Contributing
-Contributions are welcome! Here's how you can contribute:
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## Acknowledgements
 - Thanks to Flutter and Dart communities for their amazing support and resources
-- ****** TO BE ADDED ******
+- APIs: ****** TO BE ADDED ******
