@@ -31,7 +31,6 @@ It includes features like automatic currency conversion to help users manage the
    ```
    git clone https://github.com/your_username/trip-planner-app.git
    cd trip-planner-app
-   ```
    
 2. Install dependncies:
    ```
