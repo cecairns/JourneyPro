@@ -102,3 +102,5 @@ For answers to common questions about this code of conduct, see the FAQ at [http
 ## Signatures
 
 ![Mithilesh's Signature](src/MP.png)
+![Carrie's Signature](src/CCsignature.png)
+
