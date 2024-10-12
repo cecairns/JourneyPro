@@ -52,7 +52,7 @@ This Code of Conduct applies within all community spaces, and also applies when 
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at [INSERT CONTACT METHOD]. All complaints will be reviewed and investigated promptly and fairly.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at [ccairns10@uri.edu]. All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the reporter of any incident.
 
@@ -103,4 +103,9 @@ For answers to common questions about this code of conduct, see the FAQ at [http
 
 ![Mithilesh's Signature](src/MP.png)
 ![Carrie's Signature](src/CCsignature.png)
+![Megan's Signature](src/WentworthSign.png)
+![Darren's Signature](src/DMSig.png)
+![Skye's Signature](src/InitialsSV.png)
+
+
 
