@@ -105,8 +105,8 @@ For answers to common questions about this code of conduct, see the FAQ at [http
 ![Mithilesh's Signature](src/MP.png)
 ![Carrie's Signature](src/CCsignature.png)
 ![Megan's Signature](src/WentworthSign.png)
-![Skye's Signature](src/InitialsSV.png)
 ![Darren's Signature](src/DMSig.png)
+![Skye's Signature](src/InitialsSV.png)
 
 
 
