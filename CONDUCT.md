@@ -39,6 +39,7 @@ Examples of unacceptable behavior include:
 - All members must attend meetings. If someone is unable to attend, prior notice must be given.
 - Tasks will be assigned based on members' strengths to ensure efficiency and quality.
 - Meetings will primarily be held online for the convenience of the group.
+- Following 305Soft Policy, we will not allow any use of distracting technology (e.g. texting on the side) during all team meetings
 
 ## Enforcement Responsibilities
 
