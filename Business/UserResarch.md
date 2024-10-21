@@ -17,9 +17,9 @@ Observation 3:
 - Team Action (if any): Start with a free app supported by ads, with plans to introduce a subscription-based version in the future.
 
 Observation 4:
-- Observation Statement:
-- Supporting Data:
-- Team Action (if any):
+- Observation Statement: Majority of users liked the current name for the app
+- Supporting Data: More than 60% gave a positive response towards the name JourneyPro
+- Team Action (if any): We will keep the name but later down the line may split it into JourneyLite and JourneyPro based on subscription
 
 Observation 5:
 - Observation Statement:
