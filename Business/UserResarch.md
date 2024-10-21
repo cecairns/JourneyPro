@@ -22,6 +22,6 @@ Observation 4:
 - Team Action (if any): We will keep the name but later down the line may split it into JourneyLite and JourneyPro based on subscription
 
 Observation 5:
-- Observation Statement:
-- Supporting Data:
-- Team Action (if any):
+- Observation Statement: The majority of users would like to see an in app translation app
+- Supporting Data: 3 of our data responses says they use some sort of translating app to communicate with a language barrier
+- Team Action (if any): Look into implementing the google translate API into our app
