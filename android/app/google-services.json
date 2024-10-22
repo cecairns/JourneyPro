@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "569419467591",
+    "project_id": "journeypro-a5a08",
+    "storage_bucket": "journeypro-a5a08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569419467591:android:1d0e04f693f8ceb13a5a62",
+        "android_client_info": {
+          "package_name": "com.mycompany.journeypro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB23B4Dd2M1-5ZZ_4xhgAnry_7xt9MZYNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
