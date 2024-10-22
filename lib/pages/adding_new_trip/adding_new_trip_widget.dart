@@ -1,27 +1,28 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'expense_list_model.dart';
-export 'expense_list_model.dart';
+import 'adding_new_trip_model.dart';
+export 'adding_new_trip_model.dart';
 
-class ExpenseListWidget extends StatefulWidget {
-  const ExpenseListWidget({super.key});
+class AddingNewTripWidget extends StatefulWidget {
+  const AddingNewTripWidget({super.key});
 
   @override
-  State<ExpenseListWidget> createState() => _ExpenseListWidgetState();
+  State<AddingNewTripWidget> createState() => _AddingNewTripWidgetState();
 }
 
-class _ExpenseListWidgetState extends State<ExpenseListWidget> {
-  late ExpenseListModel _model;
+class _AddingNewTripWidgetState extends State<AddingNewTripWidget> {
+  late AddingNewTripModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ExpenseListModel());
+    _model = createModel(context, () => AddingNewTripModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'ExpenseList'});
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'AddingNewTrip'});
   }
 
   @override

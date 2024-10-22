@@ -1,27 +1,27 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'expense_list_model.dart';
-export 'expense_list_model.dart';
+import 'add_todo_model.dart';
+export 'add_todo_model.dart';
 
-class ExpenseListWidget extends StatefulWidget {
-  const ExpenseListWidget({super.key});
+class AddTodoWidget extends StatefulWidget {
+  const AddTodoWidget({super.key});
 
   @override
-  State<ExpenseListWidget> createState() => _ExpenseListWidgetState();
+  State<AddTodoWidget> createState() => _AddTodoWidgetState();
 }
 
-class _ExpenseListWidgetState extends State<ExpenseListWidget> {
-  late ExpenseListModel _model;
+class _AddTodoWidgetState extends State<AddTodoWidget> {
+  late AddTodoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ExpenseListModel());
+    _model = createModel(context, () => AddTodoModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'ExpenseList'});
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'AddTodo'});
   }
 
   @override

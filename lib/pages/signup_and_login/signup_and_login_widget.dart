@@ -4,27 +4,29 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'login_model.dart';
-export 'login_model.dart';
+import 'signup_and_login_model.dart';
+export 'signup_and_login_model.dart';
 
-class LoginWidget extends StatefulWidget {
-  const LoginWidget({super.key});
+class SignupAndLoginWidget extends StatefulWidget {
+  const SignupAndLoginWidget({super.key});
 
   @override
-  State<LoginWidget> createState() => _LoginWidgetState();
+  State<SignupAndLoginWidget> createState() => _SignupAndLoginWidgetState();
 }
 
-class _LoginWidgetState extends State<LoginWidget>
+class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
     with TickerProviderStateMixin {
-  late LoginModel _model;
+  late SignupAndLoginModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => LoginModel());
+    _model = createModel(context, () => SignupAndLoginModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'SignupAndLogin'});
     _model.tabBarController = TabController(
       vsync: this,
       length: 2,
@@ -702,6 +704,9 @@ class _LoginWidgetState extends State<LoginWidget>
                     children: [
                       FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'SIGNUP_AND_LOGIN_PAGE_LoginButton_ON_TAP');
+                          logFirebaseEvent('LoginButton_auth');
                           GoRouter.of(context).prepareAuthEvent();
 
                           final user = await authManager.signInWithEmail(
@@ -713,7 +718,9 @@ class _LoginWidgetState extends State<LoginWidget>
                             return;
                           }
 
-                          context.goNamedAuth('HomePage', context.mounted);
+                          logFirebaseEvent('LoginButton_navigate_to');
+
+                          context.pushNamedAuth('HomePage', context.mounted);
                         },
                         text: 'Login',
                         options: FFButtonOptions(
@@ -737,10 +744,14 @@ class _LoginWidgetState extends State<LoginWidget>
                       if (_model.tabBarCurrentIndex == 0)
                         FFButtonWidget(
                           onPressed: () async {
+                            logFirebaseEvent(
+                                'SIGNUP_AND_LOGIN_SignUpButton_ON_TAP');
+                            logFirebaseEvent('SignUpButton_validate_form');
                             if (_model.formKey.currentState == null ||
                                 !_model.formKey.currentState!.validate()) {
                               return;
                             }
+                            logFirebaseEvent('SignUpButton_auth');
                             GoRouter.of(context).prepareAuthEvent();
                             if (_model.signupPassTextController.text !=
                                 _model.confirmPassTextController.text) {
@@ -763,6 +774,8 @@ class _LoginWidgetState extends State<LoginWidget>
                             if (user == null) {
                               return;
                             }
+
+                            logFirebaseEvent('SignUpButton_navigate_to');
 
                             context.pushNamedAuth('HomePage', context.mounted);
                           },

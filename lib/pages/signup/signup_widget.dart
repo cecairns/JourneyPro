@@ -21,6 +21,8 @@ class _SignupWidgetState extends State<SignupWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SignupModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Signup'});
   }
 
   @override

@@ -72,13 +72,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const HomePageWidget() : const LoginWidget(),
+          appStateNotifier.loggedIn ? const HomePageWidget() : const SignupAndLoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? const HomePageWidget() : const LoginWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? const HomePageWidget()
+              : const SignupAndLoginWidget(),
         ),
         FFRoute(
           name: 'HomePage',
@@ -86,9 +87,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const HomePageWidget(),
         ),
         FFRoute(
-          name: 'Login',
-          path: '/login',
-          builder: (context, params) => const LoginWidget(),
+          name: 'SignupAndLogin',
+          path: '/signupAndLogin',
+          builder: (context, params) => const SignupAndLoginWidget(),
         ),
         FFRoute(
           name: 'Signup',
@@ -109,6 +110,61 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Home',
           path: '/home',
           builder: (context, params) => const HomeWidget(),
+        ),
+        FFRoute(
+          name: 'Introduction',
+          path: '/introduction',
+          builder: (context, params) => const IntroductionWidget(),
+        ),
+        FFRoute(
+          name: 'UserProfile',
+          path: '/userProfile',
+          builder: (context, params) => const UserProfileWidget(),
+        ),
+        FFRoute(
+          name: 'Settings',
+          path: '/settings',
+          builder: (context, params) => const SettingsWidget(),
+        ),
+        FFRoute(
+          name: 'CurrencyConverter',
+          path: '/currencyConverter',
+          builder: (context, params) => const CurrencyConverterWidget(),
+        ),
+        FFRoute(
+          name: 'Info',
+          path: '/info',
+          builder: (context, params) => const InfoWidget(),
+        ),
+        FFRoute(
+          name: 'TripCard',
+          path: '/tripCard',
+          builder: (context, params) => const TripCardWidget(),
+        ),
+        FFRoute(
+          name: 'AddingNewTrip',
+          path: '/addingNewTrip',
+          builder: (context, params) => const AddingNewTripWidget(),
+        ),
+        FFRoute(
+          name: 'Map',
+          path: '/map',
+          builder: (context, params) => const MapWidget(),
+        ),
+        FFRoute(
+          name: 'AddTodo',
+          path: '/addTodo',
+          builder: (context, params) => const AddTodoWidget(),
+        ),
+        FFRoute(
+          name: 'LocalMap',
+          path: '/localMap',
+          builder: (context, params) => const LocalMapWidget(),
+        ),
+        FFRoute(
+          name: 'ExpensesList',
+          path: '/expensesList',
+          builder: (context, params) => const ExpensesListWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -279,7 +335,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/login';
+            return '/signupAndLogin';
           }
           return null;
         },

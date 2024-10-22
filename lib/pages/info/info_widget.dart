@@ -1,27 +1,27 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'expense_list_model.dart';
-export 'expense_list_model.dart';
+import 'info_model.dart';
+export 'info_model.dart';
 
-class ExpenseListWidget extends StatefulWidget {
-  const ExpenseListWidget({super.key});
+class InfoWidget extends StatefulWidget {
+  const InfoWidget({super.key});
 
   @override
-  State<ExpenseListWidget> createState() => _ExpenseListWidgetState();
+  State<InfoWidget> createState() => _InfoWidgetState();
 }
 
-class _ExpenseListWidgetState extends State<ExpenseListWidget> {
-  late ExpenseListModel _model;
+class _InfoWidgetState extends State<InfoWidget> {
+  late InfoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ExpenseListModel());
+    _model = createModel(context, () => InfoModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'ExpenseList'});
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Info'});
   }
 
   @override

@@ -1,27 +1,29 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'expense_list_model.dart';
-export 'expense_list_model.dart';
+import 'currency_converter_model.dart';
+export 'currency_converter_model.dart';
 
-class ExpenseListWidget extends StatefulWidget {
-  const ExpenseListWidget({super.key});
+class CurrencyConverterWidget extends StatefulWidget {
+  const CurrencyConverterWidget({super.key});
 
   @override
-  State<ExpenseListWidget> createState() => _ExpenseListWidgetState();
+  State<CurrencyConverterWidget> createState() =>
+      _CurrencyConverterWidgetState();
 }
 
-class _ExpenseListWidgetState extends State<ExpenseListWidget> {
-  late ExpenseListModel _model;
+class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
+  late CurrencyConverterModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ExpenseListModel());
+    _model = createModel(context, () => CurrencyConverterModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'ExpenseList'});
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'CurrencyConverter'});
   }
 
   @override

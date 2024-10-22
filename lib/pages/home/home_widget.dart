@@ -1,7 +1,7 @@
-import '/components/trips_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/trips/trips_widget.dart';
 import 'package:flutter/material.dart';
 import 'home_model.dart';
 export 'home_model.dart';
@@ -23,6 +23,8 @@ class _HomeWidgetState extends State<HomeWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomeModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Home'});
   }
 
   @override

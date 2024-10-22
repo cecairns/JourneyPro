@@ -22,6 +22,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'HomePage'});
   }
 
   @override
@@ -45,11 +47,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             children: [
               FFButtonWidget(
                 onPressed: () async {
+                  logFirebaseEvent('HOME_PAGE_PAGE_Signout_ON_TAP');
+                  logFirebaseEvent('Signout_auth');
                   GoRouter.of(context).prepareAuthEvent();
                   await authManager.signOut();
                   GoRouter.of(context).clearRedirectLocation();
 
-                  context.pushNamedAuth('Login', context.mounted);
+                  logFirebaseEvent('Signout_navigate_to');
+
+                  context.pushNamedAuth('SignupAndLogin', context.mounted);
                 },
                 text: 'Button',
                 options: FFButtonOptions(
