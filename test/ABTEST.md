@@ -45,6 +45,3 @@ The impact of this drop-off is significant, as users are not able to complete th
 - **Control Layout**: Existing design, no changes.
 - **Variation A (Simple Layout)**: Mockup with only essential fields and an "Add More Details" button that expands to show optional fields if needed.
 
----
-
-This A/B test will help determine if simplifying the layout improves the "Add New Trip" completion rate and makes users feel the app is more user-friendly, potentially impacting user retention and engagement positively.
