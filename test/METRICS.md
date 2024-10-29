@@ -10,3 +10,5 @@ Metric 3 - how to collect
 Metric 4 - how to collect
 
 Metric 5 - how to collect
+
+CTR for Picking Created Trip - Can be seen on Firebase Analytics Dashboard under TRIPS_COMP_TRIPS_BUTTON_ON_TAP
