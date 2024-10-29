@@ -11,6 +11,7 @@ Purpose: Measures user satisfaction and likelihood of recommending the app to ot
 
 Metric 3
 DAU (Daily Active Users) 
+
 Collection Method: Firebase Analytics provides built-in metrics for DAU and MAU. Daily active user counts are automatically tracked by Firebase based on user session activity.
 Purpose: Indicates user engagement by showing how many users actively use the app each day.
 
