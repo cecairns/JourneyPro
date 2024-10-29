@@ -15,7 +15,10 @@ DAU (Daily Active Users)
 Collection Method: Firebase Analytics provides built-in metrics for DAU and MAU. Daily active user counts are automatically tracked by Firebase based on user session activity.
 Purpose: Indicates user engagement by showing how many users actively use the app each day.
 
-Metric 4 - how to collect
+Metric 4 - Retention
+
+Collection Method: Firebase Analytics’ retention report shows user retention over time, such as 1-day, 7-day, and 30-day retention. This data is tracked automatically for all user sessions, helping to see how many users return to the app over these timeframes.
+Purpose: Measures how often users return to the app, offering insights into long-term user engagement.
 
 Metric 5 - how to collect
 
