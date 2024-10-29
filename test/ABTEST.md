@@ -53,20 +53,37 @@ The impact of this drop-off is significant, as users are not able to complete th
 
 ## HEART Metrics
 
-This A/B test measures the Happiness metrics. This test aims to gauge user satisfaction and the overall experience with the new homepage layout.
-Hypothesis: A layout change on the homepage to give a less overwhelming UI. This change aims to better capture user interest and promote further exploration compared to the original layout. It moves the add trip button above the map unlike it's prior where it was below. This will tell us which users prefer as they will allow users to select areas of interest and make the page easier to read. 
+- **Happiness**: User satisfaction with the ease of navigating the homepage.
+- **Engagement**: Time spent on the homepage and interaction with primary homepage elements.
+- **Adoption**: New users returning to the homepage within the first week.
+- **Task Success**: The click-through rate on key buttons (e.g., "Explore," "Start," "Learn More").
 
 ## Hypothesis 
 
+A simpler, minimalist homepage will enhance user engagement and satisfaction by reducing visual clutter and focusing attention on key actions, resulting in improved click-through rates and session lengths. The user interface (UI) will be edited to see which variant users prefer. 
+
 ## Problem Statement
+
+We’ve observed a decrease in user engagement on the homepage, likely due to an overwhelming amount of content, which may cause users to feel overloaded. Simplifying the homepage could improve the experience by making it more intuitive and guiding users to primary actions more directly.
 
 ## Experiment
 
-This A/B test will run for the next 3 days to gather data across the metrics (click through rate, time spent on homepage, navigation to other pages, bounce rates and exits from homepage). The winning variant will be based on the statistically significant improvement in whichevers click-through rates and time spent on the homepage. 
+- **Setup**: Use Firebase A/B Testing (or similar tools) to randomly assign 50% of users to the existing “detailed” layout and 50% to a “minimalist” layout, featuring fewer elements and a cleaner design.
+- **Audience**: All users landing on the homepage, with a focus on new and first-time users.
+- **Tracking with Firebase Analytics:**
+  - Track click-through rates on primary calls to action (CTAs) in both layouts.
+  - Track session time on the homepage to measure user engagement. C
+  - Collect optional user feedback through a prompt to gauge satisfaction with the homepage experience.
 
 ## Variations
-- Control (A): Current design - has the 'Upcoming Trips' label above the map. 'Add Trips' font not bolded. Feels cramped due to little spacing.
--  Variant (B): New design - 'Upcoming Trips' label moved below the map. The 'Add Trips' font is now bolded to make it more prominent for users to see. Added a bit more spacing. 
+
+- **Control (A)**: Current design - has the 'Upcoming Trips' label above the map. 'Add Trips' font not bolded. Feels cramped due to little spacing.
+-  **Variant (B)**: New design - 'Upcoming Trips' label moved below the map. The 'Add Trips' font is now bolded to make it more prominent for users to see. Added a bit more spacing.
+
+## Design Work
+
+**Control Layout: **Existing design, no changes.
+**Variation A (Minimalist Layout):** Mockup with prominent CTAs and reduced information, with expandable options for additional sections.
 
 (Darren)
 # A/B Test: “login page layout change"
