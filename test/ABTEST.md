@@ -68,4 +68,48 @@ This A/B test will run for the next 3 days to gather data across the metrics (cl
 - Control (A): Current design - has the 'Upcoming Trips' label above the map. 'Add Trips' font not bolded. Feels cramped due to little spacing.
 -  Variant (B): New design - 'Upcoming Trips' label moved below the map. The 'Add Trips' font is now bolded to make it more prominent for users to see. Added a bit more spacing. 
 
+(Darren)
+# A/B Test: “login page layout change"
 
+- **User Story Number**: US4
+
+## HEART Metrics
+
+- **Happiness**: User satisfaction with the ease of adding a trip
+- **Engagement**: User activity in the trip creation process
+- **Adoption**: New users completing the "Add New Trip" flow
+- **Task Success**: Completion rate and time to add a new trip
+
+## Hypothesis
+
+A more in depth login screen that takes users to diffrent gpages depending on login or signup contrary to what we have now where both are on the same page.
+
+## Problem Statement
+
+We have noticed making signup and login on diffrent screens adds unnecessary clicks leading to user dissatisfaction
+The impact of this is significant adding clicks and loading time that is avoidable using our prior version
+
+## Experiment
+
+- **Setup**: Use Firebase A/B Testing to randomly assign 50% of users to the existing "detailed" layout and 50% to a "simple" layout with minimal required fields.
+- **Audience**: All users in the target demographic who attempt to signup or login.
+- **Tracking with Firebase Analytics**:
+  - Track **completion rate** for each variation (percentage of users who complete the signup or login flow).
+  - Track **time spent** on the "login" and "signup" screen to measure task success efficiency.
+  - Collect user feedback through a prompt after the signup or login is successful (optional).
+  - **HEART Metrics**:
+    - **Engagement** (session length, number of times users logs in)
+    - **Adoption** (number of new users who complete the "login" + "signup" flow)
+    - **Task Success** (completion rate and time spent "login" + "signup")
+
+## Variations
+
+1. **Control (Detailed Layout)**:
+   - Current layout with fields for trip name, location, start and end dates, and optional fields like trip description, itinerary, travel companions, etc.
+
+2. **Variation A (Simple Layout)**:
+   - Reduced layout with only essential fields: trip name, location, start date, and end date. Optional fields are hidden under an expandable "Add More Details" section to simplify the screen.
+
+### Design Work
+- **Control Layout**: Existing design, no changes.
+- **Variation A (Simple Layout)**: Mockup with only essential fields and an "Add More Details" button that expands to show optional fields if needed.
