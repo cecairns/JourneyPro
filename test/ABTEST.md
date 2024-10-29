@@ -45,3 +45,27 @@ The impact of this drop-off is significant, as users are not able to complete th
 - **Control Layout**: Existing design, no changes.
 - **Variation A (Simple Layout)**: Mockup with only essential fields and an "Add More Details" button that expands to show optional fields if needed.
 
+
+(Carrie) 
+# A/B Test: "Homepage Layout Change"
+
+**User Story Number**: US4
+
+## HEART Metrics
+
+This A/B test measures the Happiness metrics. This test aims to gauge user satisfaction and the overall experience with the new homepage layout.
+Hypothesis: A layout change on the homepage to give a less overwhelming UI. This change aims to better capture user interest and promote further exploration compared to the original layout. It moves the add trip button above the map unlike it's prior where it was below. This will tell us which users prefer as they will allow users to select areas of interest and make the page easier to read. 
+
+## Hypothesis 
+
+## Problem Statement
+
+## Experiment
+
+This A/B test will run for the next 3 days to gather data across the metrics (click through rate, time spent on homepage, navigation to other pages, bounce rates and exits from homepage). The winning variant will be based on the statistically significant improvement in whichevers click-through rates and time spent on the homepage. 
+
+## Variations
+- Control (A): Current design - has the 'Upcoming Trips' label above the map. 'Add Trips' font not bolded. Feels cramped due to little spacing.
+-  Variant (B): New design - 'Upcoming Trips' label moved below the map. The 'Add Trips' font is now bolded to make it more prominent for users to see. Added a bit more spacing. 
+
+
