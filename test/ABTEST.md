@@ -82,7 +82,7 @@ We’ve observed a decrease in user engagement on the homepage, likely due to an
 
 ## Design Work
 
-**Control Layout: **Existing design, no changes.
+**Control Layout**: Existing design, no changes.
 **Variation A (Minimalist Layout):** Mockup with prominent CTAs and reduced information, with expandable options for additional sections.
 
 (Darren)
