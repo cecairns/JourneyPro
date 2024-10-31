@@ -22,5 +22,5 @@ Purpose: Measures how often users return to the app, offering insights into long
 
 Metric 5 - CTR (Click Through Rate)
 
-Collection Method: Custom events in Firebase Analytics are set up for specific points along the Golden Path. For example, if there’s a “Continue” or “Next” button that leads users through a flow, Firebase tracks each click. CTR is calculated by dividing the total clicks by the number of page views for that event.
+Collection Method: Firebase Analytics dashboard shows the amount of clicks on specific buttons. This is tracked automatically for all users by Firebase.
 Purpose: Helps measure user progression through key paths in the app and identifies where drop-offs might occur in the Golden Path
