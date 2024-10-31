@@ -122,14 +122,12 @@ The impact of this is significant adding clicks and loading time that is avoidab
 ## Variations
 
 1. **Control (Detailed Layout)**:
-   - Current layout with fields for trip name, location, start and end dates, and optional fields like trip description, itinerary, travel companions, etc.
-
+   - Current layout with one page and the signup and login are tabs that can be swapped between
 2. **Variation A (Simple Layout)**:
-   - Reduced layout with only essential fields: trip name, location, start date, and end date. Optional fields are hidden under an expandable "Add More Details" section to simplify the screen.
-
+   - The user is sent to a welcome page that has a signup and login button clicking one of them takes them to either signup or login page.
 ### Design Work
 - **Control Layout**: Existing design, no changes.
-- **Variation A (Simple Layout)**: Mockup with only essential fields and an "Add More Details" button that expands to show optional fields if needed.
+- **Variation A (Simple Layout)**: Mockup with only essential fields and simpler ui in each of the signup and login pages
 
 (Mithilesh)
 # A/B Test: “Light Mode vs Dark Mode”
