@@ -165,3 +165,36 @@ The problem we are trying to solve is does light mode or dark mode make the user
 Design Work
 - **Control Layout**: Existing design, no changes, which is light mode
 - **Variation**: Changes to the colors to make it dark mode
+
+(Skye)
+# A/B Test: "Primary Displayed Expense Item Currency"
+**User Story Number**: US4
+
+## HEART Metrics
+
+- **Happiness**: User satisfaction with the ease of adding, removing, and viewing expenses.
+- **Engagement**: User activity in the expense tracking process.
+- **Adoption**: New users using the expense list functionality with their first new trip.
+- **Task Success**: Users successfully tracking a list of expenses.
+
+## Hypothesis
+
+Users will want the most biggest and clearest number for each expense item to be the cost in an equivalent amount in their home currency, rather than the local currency they paid with.
+
+## Experiment
+
+- **Setup**: Use Firebase A/B Testing and remote config to randomly assign 50% of users a version where local currency is focused. and 50% where home currency is focused.
+- **Audience**: All users using the app.
+- **Tracking with Firebase Analytics**: Track usage data to see which half of users use the expense list more.
+
+## Variations
+
+1. **Control (Home Currency)**:
+   - Current layout with the home currency being the primary shown cost for each item.
+
+2. **Variation A (Local Currency)**:
+   - Instead of home currency, the currency that was originally used to buy the item is shown as its primary cost.
+
+### Design Work
+- **Control Layout**: Existing design, no changes.
+- **Variation A (Local Currency)**: Mockup with the local currency replacing the home on the expense item component.
