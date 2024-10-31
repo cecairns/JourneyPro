@@ -130,3 +130,38 @@ The impact of this is significant adding clicks and loading time that is avoidab
 ### Design Work
 - **Control Layout**: Existing design, no changes.
 - **Variation A (Simple Layout)**: Mockup with only essential fields and an "Add More Details" button that expands to show optional fields if needed.
+
+(Mithilesh)
+# A/B Test: “Light Mode vs Dark Mode”
+
+- **User Story Number**: US5
+
+## HEART Metrics
+
+- **Happiness**: User satisfaction with the look of the app
+- **Engagement**: User activity in the app contents
+- **Adoption**: New users signing up
+- **Retention**: User keep coming back
+- **Task Success**: Users go through the golden path
+
+## Hypothesis
+
+The problem we are trying to solve is does light mode or dark mode make the users use the app more. Hypothesis is dark mode could make the users use the app longer or more frequently.
+
+## Experiment
+
+- **Setup**: Use Firebase A/B Testing to randomly assign 50% of users to the existing light mode and 50% to dark mode.
+- **Audience**: All users using the app.
+- **Tracking with Firebase Analytics**: track time spent on the app on light mode and dark mode.
+
+## Variations
+
+1. **Control**:
+   - Light mode.
+
+2. **Variation**:
+   - Dark mode.
+
+Design Work
+- **Control Layout**: Existing design, no changes, which is light mode
+- **Variation**: Changes to the colors to make it dark mode
