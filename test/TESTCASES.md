@@ -1,4 +1,4 @@
-#### <link to template slide> US1: User Account Creation
+#### <link to template slide> (https://docs.google.com/presentation/d/1g5zT2REaCrqEDMP4EulbblFtIUeWTSHqBgf67PozY_U/edit?usp=sharing) US1: User Account Creation
 
 #### <[link to template slide](https://docs.google.com/presentation/d/1gz8mqAA0b2mBx5OiXAEj5tHtlTUl7_r9ycJhn0rXkAU/edit?usp=sharing)> US2: User Login
 
