@@ -1,6 +1,6 @@
 #### <link to template slide> US1: User Account Creation
 
-#### <link to template slide> US2: User Login
+#### <[link to template slide](https://docs.google.com/presentation/d/1gz8mqAA0b2mBx5OiXAEj5tHtlTUl7_r9ycJhn0rXkAU/edit?usp=sharing)> US2: User Login
 
 #### <link to template slide> US3: Backend Management
 
