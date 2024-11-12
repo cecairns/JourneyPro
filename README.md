@@ -1,7 +1,7 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CONDUCT.md)
 # JourneyPro
 
-****** ADD LOGO ******
+![JourneyPro Logo](src/JourneyProLogo2.png)
 
 ## Overview
 
