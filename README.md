@@ -1,32 +1,46 @@
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CONDUCT.md)
 # JourneyPro
 
-A new Flutter project.
+![JourneyPro Logo](src/JourneyProLogo2.png)
 
-## Getting Started
+## Overview
 
-FlutterFlow projects are built to run on the Flutter _stable_ release.
+We created this application for our CSC305 class at the University of Rhode Island. 
+This FlutterFlow/Dart application allows users to plan trips, record expenses, and explore famous places at their destinations.
+It includes features like automatic currency conversion to help users manage their travel finances effectively.
 
-## Integration Tests
+## Features
 
-To test on a real iOS / Android device, first connect the device and run the following command from the root of the project:
+- **Trip Planning**: Plan your trips by entering destination details, travel dates, and itinerary.
+- **Expense Tracking**: Record expenses incurred during your trip, categorize them, and track your budget.
+- **Explore Famous Places**: Discover popular attractions and landmarks at your destination to plan your itinerary.
+- **Automatic Currency Converter**: Convert expenses into local currencies automatically based on real-time exchange rates.
 
-```bash
-flutter test integration_test/test.dart
-```
+## Screenshots
 
-To test on a web browser, first launch `chromedriver` as follows:
-```bash
-chromedriver --port=4444
-```
+****** TO BE ADDED ******
 
-Then from the root of the project, run the following command:
-```bash
-flutter drive \
-  --driver=test_driver/integration_test.dart \
-  --target=integration_test/test.dart \
-  -d chrome
-```
+## Technologies Used
 
-Find more information about running Flutter integration tests [here](https://docs.flutter.dev/cookbook/testing/integration/introduction#5-run-the-integration-test).
+- **Flutter**: Frontend framework for building the mobile app.
+- **Dart**: Programming language used with Flutter for app logic and UI design.
+- **FlutterFlow**: Rapid app development tool for creating UI components and connecting them with Dart backend.
 
-Refer to this guide for instructions on running the tests on [Firebase Test Lab](https://github.com/flutter/flutter/tree/main/packages/integration_test#firebase-test-lab).
+## Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/your_username/trip-planner-app.git
+   cd trip-planner-app
+2. Install dependncies:
+   ```
+   flutter pub get
+3. Run the app:
+   ```
+   flutter run
+## License
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
+## Acknowledgements
+- Thanks to Flutter and Dart communities for their amazing support and resources
+- APIs: ****** TO BE ADDED ******
