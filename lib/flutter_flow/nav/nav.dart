@@ -2,17 +2,19 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
 
 const kTransitionInfoKey = '__transition_info__';
+
+GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 
 class AppStateNotifier extends ChangeNotifier {
   AppStateNotifier._();
@@ -67,39 +69,27 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
+GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
+    GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const HomePageWidget() : const SignupAndLoginWidget(),
+      navigatorKey: appNavigatorKey,
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? entryPage ?? const HomeWidget()
+          : const IntroductionWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? const HomePageWidget()
-              : const SignupAndLoginWidget(),
-        ),
-        FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
-          builder: (context, params) => const HomePageWidget(),
+              ? entryPage ?? const HomeWidget()
+              : const IntroductionWidget(),
         ),
         FFRoute(
           name: 'SignupAndLogin',
           path: '/signupAndLogin',
           builder: (context, params) => const SignupAndLoginWidget(),
-        ),
-        FFRoute(
-          name: 'Signup',
-          path: '/signup',
-          builder: (context, params) => const SignupWidget(),
-        ),
-        FFRoute(
-          name: 'ExpenseList',
-          path: '/expenseList',
-          builder: (context, params) => const ExpenseListWidget(),
         ),
         FFRoute(
           name: 'ProfileCreation',
@@ -115,11 +105,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Introduction',
           path: '/introduction',
           builder: (context, params) => const IntroductionWidget(),
-        ),
-        FFRoute(
-          name: 'UserProfile',
-          path: '/userProfile',
-          builder: (context, params) => const UserProfileWidget(),
         ),
         FFRoute(
           name: 'Settings',
@@ -139,32 +124,129 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'TripCard',
           path: '/tripCard',
-          builder: (context, params) => const TripCardWidget(),
+          asyncParams: {
+            'tripDetails': getDoc(['trips'], TripsRecord.fromSnapshot),
+          },
+          builder: (context, params) => TripCardWidget(
+            tripDetails: params.getParam(
+              'tripDetails',
+              ParamType.Document,
+            ),
+          ),
         ),
         FFRoute(
-          name: 'AddingNewTrip',
-          path: '/addingNewTrip',
-          builder: (context, params) => const AddingNewTripWidget(),
+          name: 'AddTrip',
+          path: '/addTrip',
+          builder: (context, params) => const AddTripWidget(),
+        ),
+        FFRoute(
+          name: 'AddActivity',
+          path: '/addActivity',
+          asyncParams: {
+            'trips': getDoc(['trips'], TripsRecord.fromSnapshot),
+          },
+          builder: (context, params) => AddActivityWidget(
+            trips: params.getParam(
+              'trips',
+              ParamType.Document,
+            ),
+          ),
         ),
         FFRoute(
           name: 'Map',
           path: '/map',
-          builder: (context, params) => const MapWidget(),
-        ),
-        FFRoute(
-          name: 'AddTodo',
-          path: '/addTodo',
-          builder: (context, params) => const AddTodoWidget(),
-        ),
-        FFRoute(
-          name: 'LocalMap',
-          path: '/localMap',
-          builder: (context, params) => const LocalMapWidget(),
+          asyncParams: {
+            'tripDetails': getDoc(['trips'], TripsRecord.fromSnapshot),
+          },
+          builder: (context, params) => MapWidget(
+            tripDetails: params.getParam(
+              'tripDetails',
+              ParamType.Document,
+            ),
+          ),
         ),
         FFRoute(
           name: 'ExpensesList',
           path: '/expensesList',
-          builder: (context, params) => const ExpensesListWidget(),
+          builder: (context, params) => ExpensesListWidget(
+            trips: params.getParam(
+              'trips',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['trips'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'AddExpense',
+          path: '/addExpense',
+          builder: (context, params) => AddExpenseWidget(
+            trips: params.getParam(
+              'trips',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['trips'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'EditExpense',
+          path: '/editExpense',
+          asyncParams: {
+            'expense':
+                getDoc(['trips', 'expenses'], ExpensesRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditExpenseWidget(
+            expense: params.getParam(
+              'expense',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'ActivitiesList',
+          path: '/activitiesList',
+          asyncParams: {
+            'trips': getDoc(['trips'], TripsRecord.fromSnapshot),
+          },
+          builder: (context, params) => ActivitiesListWidget(
+            trips: params.getParam(
+              'trips',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'EditActivity',
+          path: '/editActivity',
+          asyncParams: {
+            'activites':
+                getDoc(['trips', 'Activities'], ActivitiesRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditActivityWidget(
+            activites: params.getParam(
+              'activites',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'EditProfile',
+          path: '/editProfile',
+          builder: (context, params) => const EditProfileWidget(),
+        ),
+        FFRoute(
+          name: 'EditTrip',
+          path: '/editTrip',
+          asyncParams: {
+            'tripDetails': getDoc(['trips'], TripsRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditTripWidget(
+            tripDetails: params.getParam(
+              'tripDetails',
+              ParamType.Document,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -335,7 +417,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/signupAndLogin';
+            return '/introduction';
           }
           return null;
         },
@@ -349,15 +431,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
-                    ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    'assets/images/JourneyProLogo2.png',
+                    fit: BoxFit.contain,
                   ),
                 )
               : page;

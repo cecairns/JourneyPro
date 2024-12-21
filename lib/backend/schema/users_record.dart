@@ -45,6 +45,31 @@ class UsersRecord extends FirestoreRecord {
   String get phoneNumber => _phoneNumber ?? '';
   bool hasPhoneNumber() => _phoneNumber != null;
 
+  // "NPS" field.
+  String? _nps;
+  String get nps => _nps ?? '';
+  bool hasNps() => _nps != null;
+
+  // "bio" field.
+  String? _bio;
+  String get bio => _bio ?? '';
+  bool hasBio() => _bio != null;
+
+  // "location" field.
+  LatLng? _location;
+  LatLng? get location => _location;
+  bool hasLocation() => _location != null;
+
+  // "Birthday" field.
+  DateTime? _birthday;
+  DateTime? get birthday => _birthday;
+  bool hasBirthday() => _birthday != null;
+
+  // "location_sharing" field.
+  bool? _locationSharing;
+  bool get locationSharing => _locationSharing ?? false;
+  bool hasLocationSharing() => _locationSharing != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -52,6 +77,11 @@ class UsersRecord extends FirestoreRecord {
     _uid = snapshotData['uid'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
+    _nps = snapshotData['NPS'] as String?;
+    _bio = snapshotData['bio'] as String?;
+    _location = snapshotData['location'] as LatLng?;
+    _birthday = snapshotData['Birthday'] as DateTime?;
+    _locationSharing = snapshotData['location_sharing'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -94,6 +124,11 @@ Map<String, dynamic> createUsersRecordData({
   String? uid,
   DateTime? createdTime,
   String? phoneNumber,
+  String? nps,
+  String? bio,
+  LatLng? location,
+  DateTime? birthday,
+  bool? locationSharing,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -103,6 +138,11 @@ Map<String, dynamic> createUsersRecordData({
       'uid': uid,
       'created_time': createdTime,
       'phone_number': phoneNumber,
+      'NPS': nps,
+      'bio': bio,
+      'location': location,
+      'Birthday': birthday,
+      'location_sharing': locationSharing,
     }.withoutNulls,
   );
 
@@ -119,7 +159,12 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.photoUrl == e2?.photoUrl &&
         e1?.uid == e2?.uid &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.phoneNumber == e2?.phoneNumber;
+        e1?.phoneNumber == e2?.phoneNumber &&
+        e1?.nps == e2?.nps &&
+        e1?.bio == e2?.bio &&
+        e1?.location == e2?.location &&
+        e1?.birthday == e2?.birthday &&
+        e1?.locationSharing == e2?.locationSharing;
   }
 
   @override
@@ -129,7 +174,12 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.photoUrl,
         e?.uid,
         e?.createdTime,
-        e?.phoneNumber
+        e?.phoneNumber,
+        e?.nps,
+        e?.bio,
+        e?.location,
+        e?.birthday,
+        e?.locationSharing
       ]);
 
   @override
