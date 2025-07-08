@@ -7,15 +7,20 @@ import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'home_model.dart';
 export 'home_model.dart';
 
+/// Home page of Authenticated User
 class HomeWidget extends StatefulWidget {
-  /// Home page of Authenticated User
   const HomeWidget({super.key});
+
+  static String routeName = 'Home';
+  static String routePath = '/home';
 
   @override
   State<HomeWidget> createState() => _HomeWidgetState();
@@ -65,9 +70,9 @@ class _HomeWidgetState extends State<HomeWidget> {
       child: Scaffold(
         key: scaffoldKey,
         resizeToAvoidBottomInset: false,
-        backgroundColor: const Color(0xFFF9F9F9),
+        backgroundColor: Color(0xFFF9F9F9),
         body: Align(
-          alignment: const AlignmentDirectional(0.0, 0.0),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: StreamBuilder<List<TripsRecord>>(
             stream: queryTripsRecord(
               queryBuilder: (tripsRecord) => tripsRecord.where(Filter.or(
@@ -100,7 +105,7 @@ class _HomeWidgetState extends State<HomeWidget> {
 
               return Container(
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF3E2C7),
+                  color: Color(0xFFF3E2C7),
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image: Image.asset(
@@ -115,11 +120,11 @@ class _HomeWidgetState extends State<HomeWidget> {
                     wrapWithModel(
                       model: _model.topBarModel,
                       updateCallback: () => safeSetState(() {}),
-                      child: const TopBarWidget(),
+                      child: TopBarWidget(),
                     ),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 0.0, 20.0, 0.0),
                         child: SingleChildScrollView(
                           child: Column(
@@ -131,10 +136,18 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       fontSize: 30.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                               ),
                               Container(
@@ -143,7 +156,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(20.0),
                                     bottomRight: Radius.circular(20.0),
                                     topLeft: Radius.circular(0.0),
@@ -155,7 +168,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   onCameraIdle: (latLng) =>
                                       _model.googleMapsCenter = latLng,
                                   initialLocation: _model.googleMapsCenter ??=
-                                      const LatLng(0.0, 0.0),
+                                      LatLng(0.0, 0.0),
                                   markers: containerTripsRecordList
                                       .map(
                                         (marker) => FlutterFlowMarker(
@@ -184,12 +197,20 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter Tight',
+                                      font: GoogleFonts.interTight(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       fontSize: 25.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                               ),
                               Builder(
@@ -210,12 +231,12 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     scrollDirection: Axis.vertical,
                                     itemCount: containerVar.length,
                                     separatorBuilder: (_, __) =>
-                                        const SizedBox(height: 10.0),
+                                        SizedBox(height: 10.0),
                                     itemBuilder: (context, containerVarIndex) {
                                       final containerVarItem =
                                           containerVar[containerVarIndex];
                                       return Container(
-                                        key: const ValueKey('Trips_d0rd'),
+                                        key: ValueKey('Trips_d0rd'),
                                         child: TripsWidget(
                                           key: Key(
                                               'Keyokc_${containerVarIndex}_of_${containerVar.length}'),
@@ -227,16 +248,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 },
                               ),
                               FFButtonWidget(
-                                key: const ValueKey('Button_eg3u'),
+                                key: ValueKey('Button_eg3u'),
                                 onPressed: () async {
                                   logFirebaseEvent(
                                       'HOME_PAGE_ADD_NEW_TRIP_BTN_ON_TAP');
                                   logFirebaseEvent('Button_navigate_to');
 
                                   context.pushNamed(
-                                    'AddTrip',
+                                    AddTripWidget.routeName,
                                     extra: <String, dynamic>{
-                                      kTransitionInfoKey: const TransitionInfo(
+                                      kTransitionInfoKey: TransitionInfo(
                                         hasTransition: true,
                                         transitionType: PageTransitionType.fade,
                                         duration: Duration(milliseconds: 0),
@@ -248,19 +269,28 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 options: FFButtonOptions(
                                   width: 350.0,
                                   height: 50.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 16.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).tertiary,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Inter Tight',
+                                        font: GoogleFonts.interTight(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontStyle,
+                                        ),
                                         color: Colors.white,
                                         fontSize: 20.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
                                       ),
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context)
@@ -271,8 +301,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 ),
                               ),
                             ]
-                                .divide(const SizedBox(height: 20.0))
-                                .around(const SizedBox(height: 20.0)),
+                                .divide(SizedBox(height: 20.0))
+                                .around(SizedBox(height: 20.0)),
                           ),
                         ),
                       ),
@@ -280,7 +310,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     wrapWithModel(
                       model: _model.bottomBarModel,
                       updateCallback: () => safeSetState(() {}),
-                      child: const BottomBarWidget(
+                      child: BottomBarWidget(
                         key: ValueKey('BottomBar_fgtw'),
                       ),
                     ),

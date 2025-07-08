@@ -1,12 +1,14 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'top_bar_model.dart';
 export 'top_bar_model.dart';
 
+/// taskbar
 class TopBarWidget extends StatefulWidget {
-  /// taskbar
   const TopBarWidget({super.key});
 
   @override
@@ -40,16 +42,16 @@ class _TopBarWidgetState extends State<TopBarWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
         height: 100.0,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: Color(0xFF727E6A),
         ),
         child: Align(
-          alignment: const AlignmentDirectional(0.0, 1.0),
+          alignment: AlignmentDirectional(0.0, 1.0),
           child: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: EdgeInsets.all(12.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -59,7 +61,7 @@ class _TopBarWidgetState extends State<TopBarWidget> {
                   borderRadius: 20.0,
                   borderWidth: 1.0,
                   buttonSize: 50.0,
-                  fillColor: const Color(0xFF62B2A4),
+                  fillColor: Color(0xFF62B2A4),
                   icon: Icon(
                     Icons.arrow_back,
                     color: FlutterFlowTheme.of(context).info,
@@ -74,11 +76,17 @@ class _TopBarWidgetState extends State<TopBarWidget> {
                 Text(
                   'Journey Pro',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        font: GoogleFonts.inter(
+                          fontWeight: FontWeight.w900,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
                         color: FlutterFlowTheme.of(context).primaryBackground,
                         fontSize: 35.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.w900,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
                 ),
                 FlutterFlowIconButton(
@@ -86,7 +94,7 @@ class _TopBarWidgetState extends State<TopBarWidget> {
                   borderRadius: 20.0,
                   borderWidth: 1.0,
                   buttonSize: 50.0,
-                  fillColor: const Color(0xFF62B2A4),
+                  fillColor: Color(0xFF62B2A4),
                   icon: Icon(
                     Icons.settings_outlined,
                     color: FlutterFlowTheme.of(context).info,
@@ -97,9 +105,9 @@ class _TopBarWidgetState extends State<TopBarWidget> {
                     logFirebaseEvent('IconButton_navigate_to');
 
                     context.pushNamed(
-                      'Settings',
+                      SettingsWidget.routeName,
                       extra: <String, dynamic>{
-                        kTransitionInfoKey: const TransitionInfo(
+                        kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,
                           transitionType: PageTransitionType.fade,
                           duration: Duration(milliseconds: 0),
@@ -108,7 +116,7 @@ class _TopBarWidgetState extends State<TopBarWidget> {
                     );
                   },
                 ),
-              ].divide(const SizedBox(width: 20.0)),
+              ].divide(SizedBox(width: 20.0)),
             ),
           ),
         ),

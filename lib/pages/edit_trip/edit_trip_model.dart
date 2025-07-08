@@ -1,6 +1,7 @@
 import '/components/bottom_bar/bottom_bar_widget.dart';
 import '/components/top_bar/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'edit_trip_widget.dart' show EditTripWidget;
 import 'package:flutter/material.dart';
 

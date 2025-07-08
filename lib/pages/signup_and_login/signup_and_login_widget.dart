@@ -2,14 +2,19 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'signup_and_login_model.dart';
 export 'signup_and_login_model.dart';
 
 class SignupAndLoginWidget extends StatefulWidget {
   const SignupAndLoginWidget({super.key});
+
+  static String routeName = 'SignupAndLogin';
+  static String routePath = '/signupAndLogin';
 
   @override
   State<SignupAndLoginWidget> createState() => _SignupAndLoginWidgetState();
@@ -33,6 +38,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
       length: 2,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
+
     _model.signUpEmailTextController ??= TextEditingController();
     _model.signUpEmailFocusNode ??= FocusNode();
 
@@ -80,7 +86,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
             ),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -91,14 +97,21 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                     'Journey Pro',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          font: GoogleFonts.inter(
+                            fontWeight: FontWeight.w900,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
                           fontSize: 50.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w900,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                         ),
                     colors: [
                       FlutterFlowTheme.of(context).primary,
-                      const Color(0xFF6BA57E)
+                      Color(0xFF6BA57E)
                     ],
                     gradientDirection: GradientDirection.ltr,
                     gradientType: GradientType.linear,
@@ -121,7 +134,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                     child: Column(
                       children: [
                         Align(
-                          alignment: const Alignment(0.0, 0),
+                          alignment: Alignment(0.0, 0),
                           child: TabBar(
                             labelColor:
                                 FlutterFlowTheme.of(context).primaryText,
@@ -130,20 +143,36 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                             labelStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .fontStyle,
                                 ),
                             unselectedLabelStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .fontStyle,
                                 ),
-                            tabs: const [
+                            tabs: [
                               Tab(
                                 text: 'Signup',
                               ),
@@ -170,10 +199,10 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      SizedBox(
+                                      Container(
                                         width: 350.0,
                                         child: TextFormField(
-                                          key: const ValueKey('sign-upEmail_dm1t'),
+                                          key: ValueKey('sign-upEmail_dm1t'),
                                           controller:
                                               _model.signUpEmailTextController,
                                           focusNode:
@@ -181,7 +210,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
                                             '_model.signUpEmailTextController',
-                                            const Duration(milliseconds: 2000),
+                                            Duration(milliseconds: 2000),
                                             () => safeSetState(() {}),
                                           ),
                                           autofocus: false,
@@ -194,25 +223,48 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                                     context)
                                                 .labelMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .fontStyle,
+                                                  ),
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
                                                   fontSize: 15.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .fontStyle,
                                                 ),
                                             hintText: 'Email...',
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelLarge
-                                                    .override(
-                                                      fontFamily: 'Inter',
-                                                      fontSize: 20.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
+                                            hintStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .labelLarge
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelLarge
+                                                            .fontStyle,
+                                                  ),
+                                                  fontSize: 20.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLarge
+                                                          .fontStyle,
+                                                ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
@@ -224,7 +276,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                                   BorderRadius.circular(20.0),
                                             ),
                                             focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0x00000000),
                                                 width: 1.0,
                                               ),
@@ -257,7 +309,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                                 FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsets.all(17.0),
+                                                EdgeInsets.all(17.0),
                                             suffixIcon: _model
                                                     .signUpEmailTextController!
                                                     .text
@@ -283,10 +335,21 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                font: GoogleFonts.inter(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
                                                 fontSize: 20.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
                                               ),
                                           keyboardType:
                                               TextInputType.emailAddress,
@@ -298,10 +361,10 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                               .asValidator(context),
                                         ),
                                       ),
-                                      SizedBox(
+                                      Container(
                                         width: 350.0,
                                         child: TextFormField(
-                                          key: const ValueKey('SignupPass_a8py'),
+                                          key: ValueKey('SignupPass_a8py'),
                                           controller:
                                               _model.signupPassTextController,
                                           focusNode: _model.signupPassFocusNode,
@@ -316,25 +379,48 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                                     context)
                                                 .labelMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .fontStyle,
+                                                  ),
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
                                                   fontSize: 15.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .fontStyle,
                                                 ),
                                             hintText: 'Password...',
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelLarge
-                                                    .override(
-                                                      fontFamily: 'Inter',
-                                                      fontSize: 20.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
+                                            hintStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .labelLarge
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelLarge
+                                                            .fontStyle,
+                                                  ),
+                                                  fontSize: 20.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLarge
+                                                          .fontStyle,
+                                                ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
@@ -346,7 +432,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                                   BorderRadius.circular(20.0),
                                             ),
                                             focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0x00000000),
                                                 width: 1.0,
                                               ),
@@ -379,7 +465,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                                 FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsets.all(17.0),
+                                                EdgeInsets.all(17.0),
                                             suffixIcon: InkWell(
                                               onTap: () => safeSetState(
                                                 () => _model
@@ -404,10 +490,21 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                font: GoogleFonts.inter(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
                                                 fontSize: 20.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
                                               ),
                                           cursorColor:
                                               FlutterFlowTheme.of(context)
@@ -417,10 +514,10 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                               .asValidator(context),
                                         ),
                                       ),
-                                      SizedBox(
+                                      Container(
                                         width: 350.0,
                                         child: TextFormField(
-                                          key: const ValueKey('ConfirmPass_sz44'),
+                                          key: ValueKey('ConfirmPass_sz44'),
                                           controller:
                                               _model.confirmPassTextController,
                                           focusNode:
@@ -436,25 +533,48 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                                     context)
                                                 .labelMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .fontStyle,
+                                                  ),
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
                                                   fontSize: 15.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .fontStyle,
                                                 ),
                                             hintText: 'Confirm Password...',
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelLarge
-                                                    .override(
-                                                      fontFamily: 'Inter',
-                                                      fontSize: 20.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
+                                            hintStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .labelLarge
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelLarge
+                                                            .fontStyle,
+                                                  ),
+                                                  fontSize: 20.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLarge
+                                                          .fontStyle,
+                                                ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
@@ -466,7 +586,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                                   BorderRadius.circular(20.0),
                                             ),
                                             focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0x00000000),
                                                 width: 1.0,
                                               ),
@@ -499,7 +619,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                                 FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                const EdgeInsets.all(17.0),
+                                                EdgeInsets.all(17.0),
                                             suffixIcon: InkWell(
                                               onTap: () => safeSetState(
                                                 () => _model
@@ -524,10 +644,21 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                font: GoogleFonts.inter(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
                                                 fontSize: 20.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
                                               ),
                                           keyboardType:
                                               TextInputType.emailAddress,
@@ -540,8 +671,8 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                         ),
                                       ),
                                     ]
-                                        .divide(const SizedBox(height: 10.0))
-                                        .around(const SizedBox(height: 10.0)),
+                                        .divide(SizedBox(height: 10.0))
+                                        .around(SizedBox(height: 10.0)),
                                   ),
                                 ),
                               ),
@@ -550,16 +681,16 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    SizedBox(
+                                    Container(
                                       width: 350.0,
                                       child: TextFormField(
-                                        key: const ValueKey('loginEmail_w7y6'),
+                                        key: ValueKey('loginEmail_w7y6'),
                                         controller:
                                             _model.loginEmailTextController,
                                         focusNode: _model.loginEmailFocusNode,
                                         onChanged: (_) => EasyDebounce.debounce(
                                           '_model.loginEmailTextController',
-                                          const Duration(milliseconds: 2000),
+                                          Duration(milliseconds: 2000),
                                           () => safeSetState(() {}),
                                         ),
                                         autofocus: false,
@@ -572,24 +703,46 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                                   context)
                                               .labelMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                font: GoogleFonts.inter(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .fontStyle,
+                                                ),
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
                                                 fontSize: 15.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontStyle,
                                               ),
                                           hintText: 'Email...',
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelLarge
-                                                  .override(
-                                                    fontFamily: 'Inter',
-                                                    fontSize: 20.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelLarge
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLarge
+                                                          .fontStyle,
+                                                ),
+                                                fontSize: 20.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w500,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLarge
+                                                        .fontStyle,
+                                              ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
@@ -601,7 +754,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                                 BorderRadius.circular(20.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 1.0,
                                             ),
@@ -633,7 +786,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                           fillColor:
                                               FlutterFlowTheme.of(context)
                                                   .secondaryBackground,
-                                          contentPadding: const EdgeInsets.all(17.0),
+                                          contentPadding: EdgeInsets.all(17.0),
                                           suffixIcon: _model
                                                   .loginEmailTextController!
                                                   .text
@@ -658,10 +811,20 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              font: GoogleFonts.inter(
+                                                fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               fontSize: 20.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                         keyboardType:
                                             TextInputType.emailAddress,
@@ -673,10 +836,10 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                             .asValidator(context),
                                       ),
                                     ),
-                                    SizedBox(
+                                    Container(
                                       width: 350.0,
                                       child: TextFormField(
-                                        key: const ValueKey('loginPass_jm9g'),
+                                        key: ValueKey('loginPass_jm9g'),
                                         controller:
                                             _model.loginPassTextController,
                                         focusNode: _model.loginPassFocusNode,
@@ -691,24 +854,46 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                                   context)
                                               .labelMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                font: GoogleFonts.inter(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .fontStyle,
+                                                ),
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
                                                 fontSize: 15.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontStyle,
                                               ),
                                           hintText: 'Password...',
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelLarge
-                                                  .override(
-                                                    fontFamily: 'Inter',
-                                                    fontSize: 20.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelLarge
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLarge
+                                                          .fontStyle,
+                                                ),
+                                                fontSize: 20.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w500,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLarge
+                                                        .fontStyle,
+                                              ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
@@ -720,7 +905,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                                 BorderRadius.circular(20.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 1.0,
                                             ),
@@ -752,7 +937,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                           fillColor:
                                               FlutterFlowTheme.of(context)
                                                   .secondaryBackground,
-                                          contentPadding: const EdgeInsets.all(17.0),
+                                          contentPadding: EdgeInsets.all(17.0),
                                           suffixIcon: InkWell(
                                             onTap: () => safeSetState(
                                               () => _model.loginPassVisibility =
@@ -775,10 +960,20 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              font: GoogleFonts.inter(
+                                                fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               fontSize: 20.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                         keyboardType:
                                             TextInputType.emailAddress,
@@ -791,8 +986,8 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                                       ),
                                     ),
                                   ]
-                                      .divide(const SizedBox(height: 10.0))
-                                      .around(const SizedBox(height: 10.0)),
+                                      .divide(SizedBox(height: 10.0))
+                                      .around(SizedBox(height: 10.0)),
                                 ),
                               ),
                             ],
@@ -822,10 +1017,10 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                           logFirebaseEvent('LoginButton_navigate_to');
 
                           context.goNamedAuth(
-                            'Home',
+                            HomeWidget.routeName,
                             context.mounted,
                             extra: <String, dynamic>{
-                              kTransitionInfoKey: const TransitionInfo(
+                              kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
                                 transitionType: PageTransitionType.fade,
                                 duration: Duration(milliseconds: 0),
@@ -837,17 +1032,25 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                         options: FFButtonOptions(
                           width: 350.0,
                           height: 50.0,
-                          padding: const EdgeInsets.all(15.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsets.all(15.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).tertiary,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Inter Tight',
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
                                     color: Colors.white,
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
                                   ),
                           elevation: 0.0,
                           borderSide: BorderSide(
@@ -859,7 +1062,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                       ),
                       if (_model.tabBarCurrentIndex == 0)
                         FFButtonWidget(
-                          key: const ValueKey('SignUpButton_mojk'),
+                          key: ValueKey('SignUpButton_mojk'),
                           onPressed: () async {
                             logFirebaseEvent(
                                 'SIGNUP_AND_LOGIN_SignUpButton_ON_TAP');
@@ -873,7 +1076,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                             if (_model.signupPassTextController.text !=
                                 _model.confirmPassTextController.text) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
+                                SnackBar(
                                   content: Text(
                                     'Passwords don\'t match!',
                                   ),
@@ -895,10 +1098,10 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                             logFirebaseEvent('SignUpButton_navigate_to');
 
                             context.goNamedAuth(
-                              'ProfileCreation',
+                              ProfileCreationWidget.routeName,
                               context.mounted,
                               extra: <String, dynamic>{
-                                kTransitionInfoKey: const TransitionInfo(
+                                kTransitionInfoKey: TransitionInfo(
                                   hasTransition: true,
                                   transitionType: PageTransitionType.fade,
                                   duration: Duration(milliseconds: 0),
@@ -915,18 +1118,26 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                           options: FFButtonOptions(
                             width: 350.0,
                             height: 50.0,
-                            padding: const EdgeInsets.all(15.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsets.all(15.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).tertiary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: Colors.white,
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                             elevation: 0.0,
                             borderSide: BorderSide(
@@ -938,7 +1149,7 @@ class _SignupAndLoginWidgetState extends State<SignupAndLoginWidget>
                         ),
                     ],
                   ),
-                ].divide(const SizedBox(height: 20.0)).around(const SizedBox(height: 20.0)),
+                ].divide(SizedBox(height: 20.0)).around(SizedBox(height: 20.0)),
               ),
             ),
           ),

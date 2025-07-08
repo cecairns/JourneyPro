@@ -1,6 +1,7 @@
 import '/components/bottom_bar/bottom_bar_widget.dart';
 import '/components/top_bar/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'edit_profile_widget.dart' show EditProfileWidget;
 import 'package:flutter/material.dart';
 
@@ -9,10 +10,10 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
 
   // Model for TopBar component.
   late TopBarModel topBarModel;
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading_uploadDataA5 = false;
+  FFUploadedFile uploadedLocalFile_uploadDataA5 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
+  String uploadedFileUrl_uploadDataA5 = '';
 
   // State field(s) for Name widget.
   FocusNode? nameFocusNode;

@@ -8,13 +8,18 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'edit_profile_model.dart';
 export 'edit_profile_model.dart';
 
 class EditProfileWidget extends StatefulWidget {
   const EditProfileWidget({super.key});
+
+  static String routeName = 'EditProfile';
+  static String routePath = '/editProfile';
 
   @override
   State<EditProfileWidget> createState() => _EditProfileWidgetState();
@@ -75,11 +80,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -90,10 +95,18 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 30.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                         ),
                         InkWell(
@@ -115,7 +128,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             if (selectedMedia != null &&
                                 selectedMedia.every((m) => validateFileFormat(
                                     m.storagePath, context))) {
-                              safeSetState(() => _model.isDataUploading = true);
+                              safeSetState(() =>
+                                  _model.isDataUploading_uploadDataA5 = true);
                               var selectedUploadedFiles = <FFUploadedFile>[];
 
                               var downloadUrls = <String>[];
@@ -140,15 +154,16 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                     .map((u) => u!)
                                     .toList();
                               } finally {
-                                _model.isDataUploading = false;
+                                _model.isDataUploading_uploadDataA5 = false;
                               }
                               if (selectedUploadedFiles.length ==
                                       selectedMedia.length &&
                                   downloadUrls.length == selectedMedia.length) {
                                 safeSetState(() {
-                                  _model.uploadedLocalFile =
+                                  _model.uploadedLocalFile_uploadDataA5 =
                                       selectedUploadedFiles.first;
-                                  _model.uploadedFileUrl = downloadUrls.first;
+                                  _model.uploadedFileUrl_uploadDataA5 =
+                                      downloadUrls.first;
                                 });
                               } else {
                                 safeSetState(() {});
@@ -160,11 +175,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
 
                             await currentUserReference!
                                 .update(createUsersRecordData(
-                              photoUrl: _model.uploadedFileUrl,
+                              photoUrl: _model.uploadedFileUrl_uploadDataA5,
                             ));
                           },
                           child: Stack(
-                            alignment: const AlignmentDirectional(-1.0, 1.0),
+                            alignment: AlignmentDirectional(-1.0, 1.0),
                             children: [
                               AuthUserStreamWidget(
                                 builder: (context) => Container(
@@ -208,14 +223,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           ),
                         ),
                         AuthUserStreamWidget(
-                          builder: (context) => SizedBox(
+                          builder: (context) => Container(
                             width: 350.0,
                             child: TextFormField(
                               controller: _model.nameTextController,
                               focusNode: _model.nameFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
                                 '_model.nameTextController',
-                                const Duration(milliseconds: 2000),
+                                Duration(milliseconds: 2000),
                                 () => safeSetState(() {}),
                               ),
                               autofocus: false,
@@ -227,21 +242,37 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       fontSize: 15.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
                                     ),
                                 hintText: 'Name...',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
-                                      fontFamily: 'Inter',
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .fontStyle,
+                                      ),
                                       fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .fontStyle,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -252,7 +283,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -275,7 +306,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 filled: true,
                                 fillColor: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                contentPadding: const EdgeInsets.all(17.0),
+                                contentPadding: EdgeInsets.all(17.0),
                                 suffixIcon: _model
                                         .nameTextController!.text.isNotEmpty
                                     ? InkWell(
@@ -295,10 +326,18 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                               keyboardType: TextInputType.name,
                               cursorColor:
@@ -313,7 +352,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             logFirebaseEvent(
                                 'EDIT_PROFILE_PAGE_Button_4gxiymwt_ON_TAP');
                             logFirebaseEvent('Button_date_time_picker');
-                            final datePickedDate = await showDatePicker(
+                            final _datePickedDate = await showDatePicker(
                               context: context,
                               initialDate: (currentUserDocument?.birthday ??
                                   DateTime.now()),
@@ -330,10 +369,19 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   headerTextStyle: FlutterFlowTheme.of(context)
                                       .headlineLarge
                                       .override(
-                                        fontFamily: 'Inter Tight',
+                                        font: GoogleFonts.interTight(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineLarge
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 32.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .headlineLarge
+                                            .fontStyle,
                                       ),
                                   pickerBackgroundColor:
                                       FlutterFlowTheme.of(context)
@@ -351,13 +399,18 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               },
                             );
 
-                            if (datePickedDate != null) {
+                            if (_datePickedDate != null) {
                               safeSetState(() {
                                 _model.datePicked = DateTime(
-                                  datePickedDate.year,
-                                  datePickedDate.month,
-                                  datePickedDate.day,
+                                  _datePickedDate.year,
+                                  _datePickedDate.month,
+                                  _datePickedDate.day,
                                 );
+                              });
+                            } else if (_model.datePicked != null) {
+                              safeSetState(() {
+                                _model.datePicked =
+                                    currentUserDocument?.birthday;
                               });
                             }
                           },
@@ -368,19 +421,27 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           options: FFButtonOptions(
                             width: 350.0,
                             height: 50.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: Colors.white,
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                             elevation: 0.0,
                             borderSide: BorderSide(
@@ -391,14 +452,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           ),
                         ),
                         AuthUserStreamWidget(
-                          builder: (context) => SizedBox(
+                          builder: (context) => Container(
                             width: 350.0,
                             child: TextFormField(
                               controller: _model.textController2,
                               focusNode: _model.textFieldFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
                                 '_model.textController2',
-                                const Duration(milliseconds: 2000),
+                                Duration(milliseconds: 2000),
                                 () => safeSetState(() {}),
                               ),
                               autofocus: false,
@@ -409,21 +470,37 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       fontSize: 15.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
                                     ),
                                 hintText: 'Bio...',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
                                       fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -434,7 +511,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -457,7 +534,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 filled: true,
                                 fillColor: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                contentPadding: const EdgeInsets.all(17.0),
+                                contentPadding: EdgeInsets.all(17.0),
                                 suffixIcon: _model
                                         .textController2!.text.isNotEmpty
                                     ? InkWell(
@@ -477,10 +554,18 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                               maxLines: null,
                               cursorColor:
@@ -505,9 +590,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             logFirebaseEvent('Button_navigate_to');
 
                             context.goNamed(
-                              'Settings',
+                              SettingsWidget.routeName,
                               extra: <String, dynamic>{
-                                kTransitionInfoKey: const TransitionInfo(
+                                kTransitionInfoKey: TransitionInfo(
                                   hasTransition: true,
                                   transitionType: PageTransitionType.fade,
                                   duration: Duration(milliseconds: 0),
@@ -519,18 +604,26 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           options: FFButtonOptions(
                             width: 350.0,
                             height: 50.0,
-                            padding: const EdgeInsets.all(15.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsets.all(15.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).tertiary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: Colors.white,
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                             elevation: 0.0,
                             borderSide: BorderSide(
@@ -540,8 +633,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           ),
                         ),
                       ]
-                          .divide(const SizedBox(height: 20.0))
-                          .around(const SizedBox(height: 20.0)),
+                          .divide(SizedBox(height: 20.0))
+                          .around(SizedBox(height: 20.0)),
                     ),
                   ),
                 ),
@@ -549,7 +642,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
               wrapWithModel(
                 model: _model.bottomBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const BottomBarWidget(),
+                child: BottomBarWidget(),
               ),
             ],
           ),

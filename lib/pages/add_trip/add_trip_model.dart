@@ -2,6 +2,7 @@ import '/components/bottom_bar/bottom_bar_widget.dart';
 import '/components/top_bar/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/index.dart';
 import 'add_trip_widget.dart' show AddTripWidget;
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class AddTripModel extends FlutterFlowModel<AddTripWidget> {
   // Model for TopBar component.
   late TopBarModel topBarModel;
   // State field(s) for PlacePicker widget.
-  FFPlace placePickerValue = const FFPlace();
+  FFPlace placePickerValue = FFPlace();
   DateTime? datePicked1;
   DateTime? datePicked2;
   // State field(s) for descrip widget.

@@ -2,6 +2,7 @@ import '/components/bottom_bar/bottom_bar_widget.dart';
 import '/components/top_bar/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'home_widget.dart' show HomeWidget;
 import 'package:flutter/material.dart';
 

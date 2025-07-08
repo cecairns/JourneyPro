@@ -6,9 +6,11 @@ import '/components/top_bar/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'edit_trip_model.dart';
 export 'edit_trip_model.dart';
 
@@ -19,6 +21,9 @@ class EditTripWidget extends StatefulWidget {
   });
 
   final TripsRecord? tripDetails;
+
+  static String routeName = 'EditTrip';
+  static String routePath = '/editTrip';
 
   @override
   State<EditTripWidget> createState() => _EditTripWidgetState();
@@ -46,14 +51,14 @@ class _EditTripWidgetState extends State<EditTripWidget> {
             elevation: 0,
             insetPadding: EdgeInsets.zero,
             backgroundColor: Colors.transparent,
-            alignment: const AlignmentDirectional(0.0, 0.0)
+            alignment: AlignmentDirectional(0.0, 0.0)
                 .resolve(Directionality.of(context)),
             child: GestureDetector(
               onTap: () {
                 FocusScope.of(dialogContext).unfocus();
                 FocusManager.instance.primaryFocus?.unfocus();
               },
-              child: const NPSSurveyWidget(),
+              child: NPSSurveyWidget(),
             ),
           );
         },
@@ -86,7 +91,7 @@ class _EditTripWidgetState extends State<EditTripWidget> {
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           body: Align(
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -103,12 +108,12 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                   wrapWithModel(
                     model: _model.topBarModel,
                     updateCallback: () => safeSetState(() {}),
-                    child: const TopBarWidget(),
+                    child: TopBarWidget(),
                   ),
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -119,10 +124,18 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 30.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                             ),
                             Container(
@@ -138,7 +151,7 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(15.0),
+                                padding: EdgeInsets.all(15.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -151,10 +164,20 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FontWeight.w500,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 20.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     ),
                                     Text(
@@ -166,13 +189,23 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FontWeight.w500,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 20.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(height: 10.0)),
+                                  ].divide(SizedBox(height: 10.0)),
                                 ),
                               ),
                             ),
@@ -188,7 +221,7 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                           'EDIT_TRIP_PAGE_Startdate_ON_TAP');
                                       logFirebaseEvent(
                                           'Startdate_date_time_picker');
-                                      final datePicked1Date =
+                                      final _datePicked1Date =
                                           await showDatePicker(
                                         context: context,
                                         initialDate:
@@ -206,16 +239,27 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                             headerForegroundColor:
                                                 FlutterFlowTheme.of(context)
                                                     .info,
-                                            headerTextStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineLarge
-                                                    .override(
-                                                      fontFamily: 'Inter Tight',
-                                                      fontSize: 32.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
+                                            headerTextStyle: FlutterFlowTheme
+                                                    .of(context)
+                                                .headlineLarge
+                                                .override(
+                                                  font: GoogleFonts.interTight(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineLarge
+                                                            .fontStyle,
+                                                  ),
+                                                  fontSize: 32.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineLarge
+                                                          .fontStyle,
+                                                ),
                                             pickerBackgroundColor:
                                                 FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
@@ -236,13 +280,18 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                         },
                                       );
 
-                                      if (datePicked1Date != null) {
+                                      if (_datePicked1Date != null) {
                                         safeSetState(() {
                                           _model.datePicked1 = DateTime(
-                                            datePicked1Date.year,
-                                            datePicked1Date.month,
-                                            datePicked1Date.day,
+                                            _datePicked1Date.year,
+                                            _datePicked1Date.month,
+                                            _datePicked1Date.day,
                                           );
+                                        });
+                                      } else if (_model.datePicked1 != null) {
+                                        safeSetState(() {
+                                          _model.datePicked1 =
+                                              widget.tripDetails?.startDate;
                                         });
                                       }
                                     },
@@ -254,21 +303,31 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                     options: FFButtonOptions(
                                       width: 350.0,
                                       height: 50.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            font: GoogleFonts.interTight(
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontStyle,
+                                            ),
                                             color: Colors.white,
                                             fontSize: 20.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontStyle,
                                           ),
                                       elevation: 0.0,
                                       borderSide: BorderSide(
@@ -285,7 +344,7 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                           'EDIT_TRIP_PAGE_Enddate_ON_TAP');
                                       logFirebaseEvent(
                                           'Enddate_date_time_picker');
-                                      final datePicked2Date =
+                                      final _datePicked2Date =
                                           await showDatePicker(
                                         context: context,
                                         initialDate:
@@ -303,16 +362,27 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                             headerForegroundColor:
                                                 FlutterFlowTheme.of(context)
                                                     .info,
-                                            headerTextStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineLarge
-                                                    .override(
-                                                      fontFamily: 'Inter Tight',
-                                                      fontSize: 32.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
+                                            headerTextStyle: FlutterFlowTheme
+                                                    .of(context)
+                                                .headlineLarge
+                                                .override(
+                                                  font: GoogleFonts.interTight(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineLarge
+                                                            .fontStyle,
+                                                  ),
+                                                  fontSize: 32.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineLarge
+                                                          .fontStyle,
+                                                ),
                                             pickerBackgroundColor:
                                                 FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
@@ -333,13 +403,18 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                         },
                                       );
 
-                                      if (datePicked2Date != null) {
+                                      if (_datePicked2Date != null) {
                                         safeSetState(() {
                                           _model.datePicked2 = DateTime(
-                                            datePicked2Date.year,
-                                            datePicked2Date.month,
-                                            datePicked2Date.day,
+                                            _datePicked2Date.year,
+                                            _datePicked2Date.month,
+                                            _datePicked2Date.day,
                                           );
+                                        });
+                                      } else if (_model.datePicked2 != null) {
+                                        safeSetState(() {
+                                          _model.datePicked2 =
+                                              widget.tripDetails?.endDate;
                                         });
                                       }
                                     },
@@ -351,21 +426,31 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                     options: FFButtonOptions(
                                       width: 350.0,
                                       height: 50.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            font: GoogleFonts.interTight(
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontStyle,
+                                            ),
                                             color: Colors.white,
                                             fontSize: 20.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontStyle,
                                           ),
                                       elevation: 0.0,
                                       borderSide: BorderSide(
@@ -376,14 +461,14 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                       borderRadius: BorderRadius.circular(20.0),
                                     ),
                                   ),
-                                  SizedBox(
+                                  Container(
                                     width: 350.0,
                                     child: TextFormField(
                                       controller: _model.descripTextController,
                                       focusNode: _model.descripFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.descripTextController',
-                                        const Duration(milliseconds: 2000),
+                                        Duration(milliseconds: 2000),
                                         () => safeSetState(() {}),
                                       ),
                                       autofocus: false,
@@ -394,22 +479,42 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              font: GoogleFonts.inter(
+                                                fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontStyle,
+                                              ),
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
                                             ),
                                         hintText: 'Description...',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              font: GoogleFonts.inter(
+                                                fontWeight: FontWeight.w500,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontStyle,
+                                              ),
                                               fontSize: 20.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -421,7 +526,7 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                               BorderRadius.circular(20.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -472,10 +577,20 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FontWeight.w500,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 20.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       maxLines: null,
                                       cursorColor: FlutterFlowTheme.of(context)
@@ -485,7 +600,7 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                           .asValidator(context),
                                     ),
                                   ),
-                                ].divide(const SizedBox(height: 12.0)),
+                                ].divide(SizedBox(height: 12.0)),
                               ),
                             ),
                             FFButtonWidget(
@@ -523,7 +638,7 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                             .primaryText,
                                       ),
                                     ),
-                                    duration: const Duration(milliseconds: 4000),
+                                    duration: Duration(milliseconds: 4000),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context).secondary,
                                   ),
@@ -531,9 +646,9 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                                 logFirebaseEvent('Button_navigate_to');
 
                                 context.goNamed(
-                                  'Home',
+                                  HomeWidget.routeName,
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
+                                    kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
                                       duration: Duration(milliseconds: 0),
@@ -545,19 +660,27 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                               options: FFButtonOptions(
                                 width: 350.0,
                                 height: 50.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).tertiary,
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
-                                      fontFamily: 'Inter Tight',
+                                      font: GoogleFonts.interTight(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
+                                      ),
                                       color: Colors.white,
                                       fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
                                     ),
                                 elevation: 0.0,
                                 borderSide: BorderSide(
@@ -569,8 +692,8 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                               ),
                             ),
                           ]
-                              .divide(const SizedBox(height: 20.0))
-                              .around(const SizedBox(height: 20.0)),
+                              .divide(SizedBox(height: 20.0))
+                              .around(SizedBox(height: 20.0)),
                         ),
                       ),
                     ),
@@ -578,7 +701,7 @@ class _EditTripWidgetState extends State<EditTripWidget> {
                   wrapWithModel(
                     model: _model.bottomBarModel,
                     updateCallback: () => safeSetState(() {}),
-                    child: const BottomBarWidget(),
+                    child: BottomBarWidget(),
                   ),
                 ],
               ),

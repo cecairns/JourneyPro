@@ -6,8 +6,9 @@ import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
-import '/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+
+import '/index.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -76,54 +77,54 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? entryPage ?? const HomeWidget()
-          : const IntroductionWidget(),
+          ? entryPage ?? HomeWidget()
+          : IntroductionWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? entryPage ?? const HomeWidget()
-              : const IntroductionWidget(),
+              ? entryPage ?? HomeWidget()
+              : IntroductionWidget(),
         ),
         FFRoute(
-          name: 'SignupAndLogin',
-          path: '/signupAndLogin',
-          builder: (context, params) => const SignupAndLoginWidget(),
+          name: SignupAndLoginWidget.routeName,
+          path: SignupAndLoginWidget.routePath,
+          builder: (context, params) => SignupAndLoginWidget(),
         ),
         FFRoute(
-          name: 'ProfileCreation',
-          path: '/profileCreation',
-          builder: (context, params) => const ProfileCreationWidget(),
+          name: ProfileCreationWidget.routeName,
+          path: ProfileCreationWidget.routePath,
+          builder: (context, params) => ProfileCreationWidget(),
         ),
         FFRoute(
-          name: 'Home',
-          path: '/home',
-          builder: (context, params) => const HomeWidget(),
+          name: HomeWidget.routeName,
+          path: HomeWidget.routePath,
+          builder: (context, params) => HomeWidget(),
         ),
         FFRoute(
-          name: 'Introduction',
-          path: '/introduction',
-          builder: (context, params) => const IntroductionWidget(),
+          name: IntroductionWidget.routeName,
+          path: IntroductionWidget.routePath,
+          builder: (context, params) => IntroductionWidget(),
         ),
         FFRoute(
-          name: 'Settings',
-          path: '/settings',
-          builder: (context, params) => const SettingsWidget(),
+          name: SettingsWidget.routeName,
+          path: SettingsWidget.routePath,
+          builder: (context, params) => SettingsWidget(),
         ),
         FFRoute(
-          name: 'CurrencyConverter',
-          path: '/currencyConverter',
-          builder: (context, params) => const CurrencyConverterWidget(),
+          name: CurrencyConverterWidget.routeName,
+          path: CurrencyConverterWidget.routePath,
+          builder: (context, params) => CurrencyConverterWidget(),
         ),
         FFRoute(
-          name: 'Info',
-          path: '/info',
-          builder: (context, params) => const InfoWidget(),
+          name: InfoWidget.routeName,
+          path: InfoWidget.routePath,
+          builder: (context, params) => InfoWidget(),
         ),
         FFRoute(
-          name: 'TripCard',
-          path: '/tripCard',
+          name: TripCardWidget.routeName,
+          path: TripCardWidget.routePath,
           asyncParams: {
             'tripDetails': getDoc(['trips'], TripsRecord.fromSnapshot),
           },
@@ -135,13 +136,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           ),
         ),
         FFRoute(
-          name: 'AddTrip',
-          path: '/addTrip',
-          builder: (context, params) => const AddTripWidget(),
+          name: AddTripWidget.routeName,
+          path: AddTripWidget.routePath,
+          builder: (context, params) => AddTripWidget(),
         ),
         FFRoute(
-          name: 'AddActivity',
-          path: '/addActivity',
+          name: AddActivityWidget.routeName,
+          path: AddActivityWidget.routePath,
           asyncParams: {
             'trips': getDoc(['trips'], TripsRecord.fromSnapshot),
           },
@@ -153,8 +154,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           ),
         ),
         FFRoute(
-          name: 'Map',
-          path: '/map',
+          name: MapWidget.routeName,
+          path: MapWidget.routePath,
           asyncParams: {
             'tripDetails': getDoc(['trips'], TripsRecord.fromSnapshot),
           },
@@ -166,8 +167,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           ),
         ),
         FFRoute(
-          name: 'ExpensesList',
-          path: '/expensesList',
+          name: ExpensesListWidget.routeName,
+          path: ExpensesListWidget.routePath,
           builder: (context, params) => ExpensesListWidget(
             trips: params.getParam(
               'trips',
@@ -178,8 +179,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           ),
         ),
         FFRoute(
-          name: 'AddExpense',
-          path: '/addExpense',
+          name: AddExpenseWidget.routeName,
+          path: AddExpenseWidget.routePath,
           builder: (context, params) => AddExpenseWidget(
             trips: params.getParam(
               'trips',
@@ -190,8 +191,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           ),
         ),
         FFRoute(
-          name: 'EditExpense',
-          path: '/editExpense',
+          name: EditExpenseWidget.routeName,
+          path: EditExpenseWidget.routePath,
           asyncParams: {
             'expense':
                 getDoc(['trips', 'expenses'], ExpensesRecord.fromSnapshot),
@@ -204,8 +205,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           ),
         ),
         FFRoute(
-          name: 'ActivitiesList',
-          path: '/activitiesList',
+          name: ActivitiesListWidget.routeName,
+          path: ActivitiesListWidget.routePath,
           asyncParams: {
             'trips': getDoc(['trips'], TripsRecord.fromSnapshot),
           },
@@ -217,8 +218,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           ),
         ),
         FFRoute(
-          name: 'EditActivity',
-          path: '/editActivity',
+          name: EditActivityWidget.routeName,
+          path: EditActivityWidget.routePath,
           asyncParams: {
             'activites':
                 getDoc(['trips', 'Activities'], ActivitiesRecord.fromSnapshot),
@@ -231,13 +232,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           ),
         ),
         FFRoute(
-          name: 'EditProfile',
-          path: '/editProfile',
-          builder: (context, params) => const EditProfileWidget(),
+          name: EditProfileWidget.routeName,
+          path: EditProfileWidget.routePath,
+          builder: (context, params) => EditProfileWidget(),
         ),
         FFRoute(
-          name: 'EditTrip',
-          path: '/editTrip',
+          name: EditTripWidget.routeName,
+          path: EditTripWidget.routePath,
           asyncParams: {
             'tripDetails': getDoc(['trips'], TripsRecord.fromSnapshot),
           },
@@ -480,7 +481,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

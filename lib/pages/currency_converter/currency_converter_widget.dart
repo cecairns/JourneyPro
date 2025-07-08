@@ -8,11 +8,15 @@ import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'currency_converter_model.dart';
 export 'currency_converter_model.dart';
 
 class CurrencyConverterWidget extends StatefulWidget {
   const CurrencyConverterWidget({super.key});
+
+  static String routeName = 'CurrencyConverter';
+  static String routePath = '/currencyConverter';
 
   @override
   State<CurrencyConverterWidget> createState() =>
@@ -70,11 +74,11 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -87,18 +91,26 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
-                                fontFamily: 'Inter',
+                                font: GoogleFonts.inter(
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
+                                ),
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 fontSize: 30.0,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.bold,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
                               ),
                         ),
                         FlutterFlowDropDown<String>(
-                          key: const ValueKey('CurConvFromText_40w8'),
+                          key: ValueKey('CurConvFromText_40w8'),
                           controller: _model.curConvFromTextValueController ??=
                               FormFieldController<String>(null),
-                          options: const [
+                          options: [
                             'USD (US Dollar)',
                             'EUR (Euro)',
                             'JPY (Yen)',
@@ -115,10 +127,18 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
                           height: 50.0,
                           textStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                           hintText: 'From...',
                           icon: Icon(
@@ -132,17 +152,17 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
                           borderColor: FlutterFlowTheme.of(context).primaryText,
                           borderWidth: 1.0,
                           borderRadius: 20.0,
-                          margin: const EdgeInsets.all(15.0),
+                          margin: EdgeInsets.all(15.0),
                           hidesUnderline: true,
                           isOverButton: false,
                           isSearchable: false,
                           isMultiSelect: false,
                         ),
                         FlutterFlowDropDown<String>(
-                          key: const ValueKey('CurConvToText_kl9w'),
+                          key: ValueKey('CurConvToText_kl9w'),
                           controller: _model.curConvToTextValueController ??=
                               FormFieldController<String>(null),
-                          options: const [
+                          options: [
                             'EUR (Euro)',
                             'JPY (Yen)',
                             'GBP (British Pound)',
@@ -159,10 +179,18 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
                           height: 50.0,
                           textStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                           hintText: 'To...',
                           icon: Icon(
@@ -176,21 +204,21 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
                           borderColor: FlutterFlowTheme.of(context).primaryText,
                           borderWidth: 1.0,
                           borderRadius: 20.0,
-                          margin: const EdgeInsets.all(15.0),
+                          margin: EdgeInsets.all(15.0),
                           hidesUnderline: true,
                           isOverButton: false,
                           isSearchable: false,
                           isMultiSelect: false,
                         ),
-                        SizedBox(
+                        Container(
                           width: 350.0,
                           child: TextFormField(
-                            key: const ValueKey('CurConvInputText_khin'),
+                            key: ValueKey('CurConvInputText_khin'),
                             controller: _model.curConvInputTextTextController,
                             focusNode: _model.curConvInputTextFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
                               '_model.curConvInputTextTextController',
-                              const Duration(milliseconds: 2000),
+                              Duration(milliseconds: 2000),
                               () => safeSetState(() {}),
                             ),
                             autofocus: false,
@@ -201,23 +229,39 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 15.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                               hintText: 'Input...',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -228,7 +272,7 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -251,7 +295,7 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              contentPadding: const EdgeInsets.all(17.0),
+                              contentPadding: EdgeInsets.all(17.0),
                               suffixIcon: _model.curConvInputTextTextController!
                                       .text.isNotEmpty
                                   ? InkWell(
@@ -272,10 +316,18 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
                                 ),
                             keyboardType: TextInputType.number,
                             cursorColor:
@@ -286,7 +338,7 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
                           ),
                         ),
                         FFButtonWidget(
-                          key: const ValueKey('Button_32fp'),
+                          key: ValueKey('Button_32fp'),
                           onPressed: () async {
                             logFirebaseEvent(
                                 'CURRENCY_CONVERTER_CONVERT_BTN_ON_TAP');
@@ -304,18 +356,26 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
                           options: FFButtonOptions(
                             width: 350.0,
                             height: 50.0,
-                            padding: const EdgeInsets.all(15.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsets.all(15.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).tertiary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: Colors.white,
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                             borderSide: BorderSide(
                               color: FlutterFlowTheme.of(context).primaryText,
@@ -336,7 +396,7 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(15.0),
+                            padding: EdgeInsets.all(15.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -346,10 +406,19 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        font: GoogleFonts.inter(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 20.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
                                       ),
                                 ),
                                 Text(
@@ -361,19 +430,28 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        font: GoogleFonts.inter(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 20.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
                                       ),
                                 ),
-                              ].divide(const SizedBox(height: 10.0)),
+                              ].divide(SizedBox(height: 10.0)),
                             ),
                           ),
                         ),
                       ]
-                          .divide(const SizedBox(height: 20.0))
-                          .around(const SizedBox(height: 20.0)),
+                          .divide(SizedBox(height: 20.0))
+                          .around(SizedBox(height: 20.0)),
                     ),
                   ),
                 ),
@@ -381,7 +459,7 @@ class _CurrencyConverterWidgetState extends State<CurrencyConverterWidget> {
               wrapWithModel(
                 model: _model.bottomBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const BottomBarWidget(),
+                child: BottomBarWidget(),
               ),
             ],
           ),

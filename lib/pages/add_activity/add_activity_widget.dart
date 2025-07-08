@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'add_activity_model.dart';
 export 'add_activity_model.dart';
 
@@ -20,6 +21,9 @@ class AddActivityWidget extends StatefulWidget {
   });
 
   final TripsRecord? trips;
+
+  static String routeName = 'AddActivity';
+  static String routePath = '/addActivity';
 
   @override
   State<AddActivityWidget> createState() => _AddActivityWidgetState();
@@ -75,11 +79,11 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -89,21 +93,29 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 30.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                         ),
                         Container(
-                          width: double.infinity,
-                          height: 300.0,
+                          width: 350.0,
+                          height: 200.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                           ),
                           child: Builder(builder: (context) {
-                            final googleMapMarker =
+                            final _googleMapMarker =
                                 _model.placePickerValue.latLng;
                             return FlutterFlowGoogleMap(
                               controller: _model.googleMapsController,
@@ -113,8 +125,8 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                   widget.trips!.longlat!,
                               markers: [
                                 FlutterFlowMarker(
-                                  googleMapMarker.serialize(),
-                                  googleMapMarker,
+                                  _googleMapMarker.serialize(),
+                                  _googleMapMarker,
                                 ),
                               ],
                               markerColor: GoogleMarkerColor.green,
@@ -133,7 +145,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                           }),
                         ),
                         FlutterFlowPlacePicker(
-                          key: const ValueKey('PlacePicker_sdc5'),
+                          key: ValueKey('PlacePicker_sdc5'),
                           iOSGoogleMapsApiKey:
                               'AIzaSyAuGyNjh8LEciN4ibVZHi7jKW1WfV7rq0w',
                           androidGoogleMapsApiKey:
@@ -148,7 +160,6 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                           },
                           defaultText: 'Select Location',
                           icon: Icon(
-                            key: const ValueKey('PlacePicker_sdc5'),
                             Icons.place,
                             color: FlutterFlowTheme.of(context).info,
                             size: 20.0,
@@ -160,11 +171,19 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: FlutterFlowTheme.of(context).info,
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                             elevation: 0.0,
                             borderSide: BorderSide(
@@ -177,7 +196,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                         FlutterFlowDropDown<String>(
                           controller: _model.dropDownValueController ??=
                               FormFieldController<String>(null),
-                          options: const [
+                          options: [
                             'Restaurants',
                             'Sightseeing',
                             'Museums',
@@ -190,10 +209,18 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                           height: 50.0,
                           textStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                           hintText: 'Select Activity...',
                           icon: Icon(
@@ -207,21 +234,21 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                           borderColor: FlutterFlowTheme.of(context).primaryText,
                           borderWidth: 1.0,
                           borderRadius: 20.0,
-                          margin: const EdgeInsetsDirectional.fromSTEB(
+                          margin: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 12.0, 0.0),
                           hidesUnderline: true,
                           isOverButton: false,
                           isSearchable: false,
                           isMultiSelect: false,
                         ),
-                        SizedBox(
+                        Container(
                           width: 350.0,
                           child: TextFormField(
                             controller: _model.textController,
                             focusNode: _model.textFieldFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
                               '_model.textController',
-                              const Duration(milliseconds: 2000),
+                              Duration(milliseconds: 2000),
                               () => safeSetState(() {}),
                             ),
                             autofocus: false,
@@ -232,21 +259,37 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 15.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                               hintText: 'Description...',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -257,7 +300,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -280,7 +323,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              contentPadding: const EdgeInsets.all(17.0),
+                              contentPadding: EdgeInsets.all(17.0),
                               suffixIcon: _model.textController!.text.isNotEmpty
                                   ? InkWell(
                                       onTap: () async {
@@ -299,10 +342,18 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
                                 ),
                             maxLines: null,
                             cursorColor:
@@ -316,7 +367,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                             logFirebaseEvent(
                                 'ADD_ACTIVITY_PAGE_Button_5zx8dc5e_ON_TAP');
                             logFirebaseEvent('Button_date_time_picker');
-                            final datePickedDate = await showDatePicker(
+                            final _datePickedDate = await showDatePicker(
                               context: context,
                               initialDate:
                                   (widget.trips?.startDate ?? DateTime.now()),
@@ -335,10 +386,19 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                   headerTextStyle: FlutterFlowTheme.of(context)
                                       .headlineLarge
                                       .override(
-                                        fontFamily: 'Inter Tight',
+                                        font: GoogleFonts.interTight(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineLarge
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 32.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .headlineLarge
+                                            .fontStyle,
                                       ),
                                   pickerBackgroundColor:
                                       FlutterFlowTheme.of(context)
@@ -356,13 +416,17 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                               },
                             );
 
-                            if (datePickedDate != null) {
+                            if (_datePickedDate != null) {
                               safeSetState(() {
                                 _model.datePicked = DateTime(
-                                  datePickedDate.year,
-                                  datePickedDate.month,
-                                  datePickedDate.day,
+                                  _datePickedDate.year,
+                                  _datePickedDate.month,
+                                  _datePickedDate.day,
                                 );
+                              });
+                            } else if (_model.datePicked != null) {
+                              safeSetState(() {
+                                _model.datePicked = widget.trips?.startDate;
                               });
                             }
                           },
@@ -373,18 +437,26 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                           options: FFButtonOptions(
                             width: 350.0,
                             height: 50.0,
-                            padding: const EdgeInsets.all(15.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsets.all(15.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: Colors.white,
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                             borderSide: BorderSide(
                               color: FlutterFlowTheme.of(context).primaryText,
@@ -394,7 +466,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                           ),
                         ),
                         FFButtonWidget(
-                          key: const ValueKey('Button_mbmm'),
+                          key: ValueKey('Button_mbmm'),
                           onPressed: () async {
                             logFirebaseEvent(
                                 'ADD_ACTIVITY_ADD_ACTIVITY_BTN_ON_TAP');
@@ -416,18 +488,26 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                           options: FFButtonOptions(
                             width: 350.0,
                             height: 50.0,
-                            padding: const EdgeInsets.all(15.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsets.all(15.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).tertiary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: Colors.white,
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                             borderSide: BorderSide(
                               color: FlutterFlowTheme.of(context).primaryText,
@@ -437,8 +517,8 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                           ),
                         ),
                       ]
-                          .divide(const SizedBox(height: 20.0))
-                          .around(const SizedBox(height: 20.0)),
+                          .divide(SizedBox(height: 20.0))
+                          .around(SizedBox(height: 20.0)),
                     ),
                   ),
                 ),
@@ -446,7 +526,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
               wrapWithModel(
                 model: _model.bottomBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const BottomBarWidget(),
+                child: BottomBarWidget(),
               ),
             ],
           ),

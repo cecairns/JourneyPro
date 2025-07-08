@@ -5,7 +5,9 @@ import '/components/top_bar/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'expenses_list_model.dart';
 export 'expenses_list_model.dart';
 
@@ -16,6 +18,9 @@ class ExpensesListWidget extends StatefulWidget {
   });
 
   final DocumentReference? trips;
+
+  static String routeName = 'ExpensesList';
+  static String routePath = '/expensesList';
 
   @override
   State<ExpensesListWidget> createState() => _ExpensesListWidgetState();
@@ -69,11 +74,11 @@ class _ExpensesListWidgetState extends State<ExpensesListWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -83,15 +88,23 @@ class _ExpensesListWidgetState extends State<ExpensesListWidget> {
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 30.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                         ),
                         Container(
                           width: 350.0,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: StreamBuilder<List<ExpensesRecord>>(
                             stream: queryExpensesRecord(
                               parent: widget.trips,
@@ -127,7 +140,7 @@ class _ExpensesListWidgetState extends State<ExpensesListWidget> {
                                 scrollDirection: Axis.vertical,
                                 itemCount: listViewExpensesRecordList.length,
                                 separatorBuilder: (_, __) =>
-                                    const SizedBox(height: 20.0),
+                                    SizedBox(height: 20.0),
                                 itemBuilder: (context, listViewIndex) {
                                   final listViewExpensesRecord =
                                       listViewExpensesRecordList[listViewIndex];
@@ -148,7 +161,7 @@ class _ExpensesListWidgetState extends State<ExpensesListWidget> {
                             logFirebaseEvent('Button_navigate_to');
 
                             context.pushNamed(
-                              'AddExpense',
+                              AddExpenseWidget.routeName,
                               queryParameters: {
                                 'trips': serializeParam(
                                   widget.trips,
@@ -156,7 +169,7 @@ class _ExpensesListWidgetState extends State<ExpensesListWidget> {
                                 ),
                               }.withoutNulls,
                               extra: <String, dynamic>{
-                                kTransitionInfoKey: const TransitionInfo(
+                                kTransitionInfoKey: TransitionInfo(
                                   hasTransition: true,
                                   transitionType: PageTransitionType.fade,
                                   duration: Duration(milliseconds: 0),
@@ -168,19 +181,27 @@ class _ExpensesListWidgetState extends State<ExpensesListWidget> {
                           options: FFButtonOptions(
                             width: 350.0,
                             height: 50.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: Colors.white,
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                             elevation: 0.0,
                             borderSide: BorderSide(
@@ -191,8 +212,8 @@ class _ExpensesListWidgetState extends State<ExpensesListWidget> {
                           ),
                         ),
                       ]
-                          .divide(const SizedBox(height: 20.0))
-                          .around(const SizedBox(height: 20.0)),
+                          .divide(SizedBox(height: 20.0))
+                          .around(SizedBox(height: 20.0)),
                     ),
                   ),
                 ),
@@ -200,7 +221,7 @@ class _ExpensesListWidgetState extends State<ExpensesListWidget> {
               wrapWithModel(
                 model: _model.bottomBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const BottomBarWidget(),
+                child: BottomBarWidget(),
               ),
             ],
           ),

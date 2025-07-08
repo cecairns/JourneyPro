@@ -1,6 +1,8 @@
+import 'dart:io';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:journey_pro/flutter_flow/flutter_flow_drop_down.dart';
 import 'package:journey_pro/flutter_flow/flutter_flow_icon_button.dart';
@@ -34,16 +36,17 @@ void main() async {
 
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => FFAppState(),
-      child: MyApp(),
+      child: const MyApp(),
     ));
+    await GoogleFonts.pendingFonts();
 
     await tester.enterText(
-        find.byKey(ValueKey('loginEmail_w7y6')), 'mwentworth14@uri.edu');
+        find.byKey(const ValueKey('loginEmail_w7y6')), 'mwentworth14@uri.edu');
     await tester.enterText(
-        find.byKey(ValueKey('loginPass_jm9g')), 'PleaseWork123');
+        find.byKey(const ValueKey('loginPass_jm9g')), 'PleaseWork123');
     await tester.pumpAndSettle();
     // I set this to be if the UI sees the "Add New Trip" button
-    expect(find.byKey(ValueKey('Button_eg3u')), findsWidgets);
+    expect(find.byKey(const ValueKey('Button_eg3u')), findsWidgets);
   });
 
   testWidgets('Account Creation', (WidgetTester tester) async {
@@ -51,16 +54,17 @@ void main() async {
 
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => FFAppState(),
-      child: MyApp(),
+      child: const MyApp(),
     ));
+    await GoogleFonts.pendingFonts();
 
     await tester.enterText(
-        find.byKey(ValueKey('sign-upEmail_dm1t')), 'NotAEmail');
+        find.byKey(const ValueKey('sign-upEmail_dm1t')), 'NotAEmail');
     await tester.enterText(
-        find.byKey(ValueKey('SignupPass_a8py')), 'Testing12345');
+        find.byKey(const ValueKey('SignupPass_a8py')), 'Testing12345');
     await tester.enterText(
-        find.byKey(ValueKey('ConfirmPass_sz44')), 'Testing12345');
-    await tester.tap(find.byKey(ValueKey('SignUpButton_mojk')));
+        find.byKey(const ValueKey('ConfirmPass_sz44')), 'Testing12345');
+    await tester.tap(find.byKey(const ValueKey('SignUpButton_mojk')));
     expect(find.text('Error'), findsWidgets);
   });
 
@@ -74,16 +78,17 @@ void main() async {
         entryPage: HomeWidget(),
       ),
     ));
+    await GoogleFonts.pendingFonts();
 
-    await tester.tap(find.byKey(ValueKey('Button_eg3u')));
+    await tester.tap(find.byKey(const ValueKey('Button_eg3u')));
     await tester.enterText(
-        find.byKey(ValueKey('Addemail_wm6l')), 'c@gmail.com');
+        find.byKey(const ValueKey('Addemail_wm6l')), 'c@gmail.com');
     FocusManager.instance.primaryFocus?.unfocus();
-    await tester.tap(find.byKey(ValueKey('Button_tqdf')));
-    await tester.tap(find.byKey(ValueKey('Button_m9fg')));
-    await tester.tap(find.byKey(ValueKey('Trips_d0rd')));
-    await tester.tap(find.byKey(ValueKey('Button_7tpf')));
-    expect(find.byKey(ValueKey('GoogleMap_961i')), findsWidgets);
+    await tester.tap(find.byKey(const ValueKey('Button_tqdf')));
+    await tester.tap(find.byKey(const ValueKey('Button_m9fg')));
+    await tester.tap(find.byKey(const ValueKey('Trips_d0rd')));
+    await tester.tap(find.byKey(const ValueKey('Button_7tpf')));
+    expect(find.byKey(const ValueKey('GoogleMap_961i')), findsWidgets);
   });
 
   testWidgets('Golden Path', (WidgetTester tester) async {
@@ -92,10 +97,11 @@ void main() async {
         email: 'mithilesh@gmail.com', password: 'Hello123');
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => FFAppState(),
-      child: MyApp(),
+      child: const MyApp(),
     ));
+    await GoogleFonts.pendingFonts();
 
-    await tester.tap(find.byKey(ValueKey('Trips_d0rd')));
+    await tester.tap(find.byKey(const ValueKey('Trips_d0rd')));
   });
 
   testWidgets('UserStory 10 Currency Converter', (WidgetTester tester) async {
@@ -108,19 +114,20 @@ void main() async {
         entryPage: HomeWidget(),
       ),
     ));
+    await GoogleFonts.pendingFonts();
 
     await tester.tap(find.descendant(
-      of: find.byKey(ValueKey('BottomBar_fgtw')),
-      matching: find.byKey(ValueKey('IconButton_95iy')),
+      of: find.byKey(const ValueKey('BottomBar_fgtw')),
+      matching: find.byKey(const ValueKey('IconButton_95iy')),
     ));
-    await tester.tap(find.byKey(ValueKey('CurConvFromText_40w8')));
+    await tester.tap(find.byKey(const ValueKey('CurConvFromText_40w8')));
     await tester.enterText(
-        find.byKey(ValueKey('CurConvInputText_khin')), '100');
+        find.byKey(const ValueKey('CurConvInputText_khin')), '100');
     FocusManager.instance.primaryFocus?.unfocus();
-    await tester.tap(find.byKey(ValueKey('CurConvToText_kl9w')));
+    await tester.tap(find.byKey(const ValueKey('CurConvToText_kl9w')));
     await tester.pump(kDoubleTapMinTime);
-    await tester.tap(find.byKey(ValueKey('CurConvToText_kl9w')));
-    await tester.tap(find.byKey(ValueKey('Button_32fp')));
+    await tester.tap(find.byKey(const ValueKey('CurConvToText_kl9w')));
+    await tester.tap(find.byKey(const ValueKey('Button_32fp')));
   });
 
   testWidgets('Adding Activities', (WidgetTester tester) async {
@@ -133,13 +140,14 @@ void main() async {
         entryPage: HomeWidget(),
       ),
     ));
+    await GoogleFonts.pendingFonts();
 
-    await tester.tap(find.byKey(ValueKey('Button_eg3u')));
-    await tester.tap(find.byKey(ValueKey('Button_m9fg')));
-    await tester.tap(find.byKey(ValueKey('Button_o7iu')));
-    await tester.tap(find.byKey(ValueKey('PlacePicker_sdc5')));
-    await tester.tap(find.byKey(ValueKey('Button_mbmm')));
-    expect(find.byKey(ValueKey('GoogleMap_961i')), findsWidgets);
+    await tester.tap(find.byKey(const ValueKey('Button_eg3u')));
+    await tester.tap(find.byKey(const ValueKey('Button_m9fg')));
+    await tester.tap(find.byKey(const ValueKey('Button_o7iu')));
+    await tester.tap(find.byKey(const ValueKey('PlacePicker_sdc5')));
+    await tester.tap(find.byKey(const ValueKey('Button_mbmm')));
+    expect(find.byKey(const ValueKey('GoogleMap_961i')), findsWidgets);
   });
 }
 

@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'edit_activity_model.dart';
 export 'edit_activity_model.dart';
 
@@ -18,6 +19,9 @@ class EditActivityWidget extends StatefulWidget {
   });
 
   final ActivitiesRecord? activites;
+
+  static String routeName = 'EditActivity';
+  static String routePath = '/editActivity';
 
   @override
   State<EditActivityWidget> createState() => _EditActivityWidgetState();
@@ -74,11 +78,11 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -88,10 +92,18 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 30.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                         ),
                         Container(
@@ -106,7 +118,7 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(15.0),
+                            padding: EdgeInsets.all(15.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -119,10 +131,19 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        font: GoogleFonts.inter(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 20.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
                                       ),
                                 ),
                                 Text(
@@ -134,13 +155,22 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        font: GoogleFonts.inter(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 20.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
                                       ),
                                 ),
-                              ].divide(const SizedBox(height: 10.0)),
+                              ].divide(SizedBox(height: 10.0)),
                             ),
                           ),
                         ),
@@ -150,7 +180,7 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                             _model.dropDownValue ??=
                                 widget.activites?.category,
                           ),
-                          options: const [
+                          options: [
                             'Restaurants',
                             'Sightseeing',
                             'Museums',
@@ -163,10 +193,18 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                           height: 50.0,
                           textStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                           hintText: 'Select Activity...',
                           icon: Icon(
@@ -180,21 +218,21 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                           borderColor: FlutterFlowTheme.of(context).primaryText,
                           borderWidth: 1.0,
                           borderRadius: 20.0,
-                          margin: const EdgeInsetsDirectional.fromSTEB(
+                          margin: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 12.0, 0.0),
                           hidesUnderline: true,
                           isOverButton: false,
                           isSearchable: false,
                           isMultiSelect: false,
                         ),
-                        SizedBox(
+                        Container(
                           width: 350.0,
                           child: TextFormField(
                             controller: _model.textController,
                             focusNode: _model.textFieldFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
                               '_model.textController',
-                              const Duration(milliseconds: 2000),
+                              Duration(milliseconds: 2000),
                               () => safeSetState(() {}),
                             ),
                             autofocus: false,
@@ -205,21 +243,37 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 15.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                               hintText: 'Description...',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -230,7 +284,7 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -253,7 +307,7 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              contentPadding: const EdgeInsets.all(17.0),
+                              contentPadding: EdgeInsets.all(17.0),
                               suffixIcon: _model.textController!.text.isNotEmpty
                                   ? InkWell(
                                       onTap: () async {
@@ -272,10 +326,18 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
                                 ),
                             maxLines: null,
                             cursorColor:
@@ -289,7 +351,7 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                             logFirebaseEvent(
                                 'EDIT_ACTIVITY_Button_inq3zfcn_ON_TAP');
                             logFirebaseEvent('Button_date_time_picker');
-                            final datePickedDate = await showDatePicker(
+                            final _datePickedDate = await showDatePicker(
                               context: context,
                               initialDate:
                                   (widget.activites?.date ?? DateTime.now()),
@@ -306,10 +368,19 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                                   headerTextStyle: FlutterFlowTheme.of(context)
                                       .headlineLarge
                                       .override(
-                                        fontFamily: 'Inter Tight',
+                                        font: GoogleFonts.interTight(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineLarge
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 32.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .headlineLarge
+                                            .fontStyle,
                                       ),
                                   pickerBackgroundColor:
                                       FlutterFlowTheme.of(context)
@@ -327,13 +398,17 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                               },
                             );
 
-                            if (datePickedDate != null) {
+                            if (_datePickedDate != null) {
                               safeSetState(() {
                                 _model.datePicked = DateTime(
-                                  datePickedDate.year,
-                                  datePickedDate.month,
-                                  datePickedDate.day,
+                                  _datePickedDate.year,
+                                  _datePickedDate.month,
+                                  _datePickedDate.day,
                                 );
+                              });
+                            } else if (_model.datePicked != null) {
+                              safeSetState(() {
+                                _model.datePicked = widget.activites?.date;
                               });
                             }
                           },
@@ -344,18 +419,26 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                           options: FFButtonOptions(
                             width: 350.0,
                             height: 50.0,
-                            padding: const EdgeInsets.all(15.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsets.all(15.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: Colors.white,
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                             borderSide: BorderSide(
                               color: FlutterFlowTheme.of(context).primaryText,
@@ -386,18 +469,26 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                           options: FFButtonOptions(
                             width: 350.0,
                             height: 50.0,
-                            padding: const EdgeInsets.all(15.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsets.all(15.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).tertiary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: Colors.white,
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                             borderSide: BorderSide(
                               color: FlutterFlowTheme.of(context).primaryText,
@@ -407,8 +498,8 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
                           ),
                         ),
                       ]
-                          .divide(const SizedBox(height: 20.0))
-                          .around(const SizedBox(height: 20.0)),
+                          .divide(SizedBox(height: 20.0))
+                          .around(SizedBox(height: 20.0)),
                     ),
                   ),
                 ),
@@ -416,7 +507,7 @@ class _EditActivityWidgetState extends State<EditActivityWidget> {
               wrapWithModel(
                 model: _model.bottomBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const BottomBarWidget(),
+                child: BottomBarWidget(),
               ),
             ],
           ),

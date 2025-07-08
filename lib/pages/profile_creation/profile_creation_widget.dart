@@ -7,13 +7,18 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'profile_creation_model.dart';
 export 'profile_creation_model.dart';
 
 class ProfileCreationWidget extends StatefulWidget {
   const ProfileCreationWidget({super.key});
+
+  static String routeName = 'ProfileCreation';
+  static String routePath = '/profileCreation';
 
   @override
   State<ProfileCreationWidget> createState() => _ProfileCreationWidgetState();
@@ -68,7 +73,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -78,10 +83,17 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                     'Create Your Profile',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          font: GoogleFonts.inter(
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
                           fontSize: 30.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                         ),
                   ),
                   InkWell(
@@ -103,7 +115,8 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                       if (selectedMedia != null &&
                           selectedMedia.every((m) =>
                               validateFileFormat(m.storagePath, context))) {
-                        safeSetState(() => _model.isDataUploading1 = true);
+                        safeSetState(
+                            () => _model.isDataUploading_uploadDataA5p = true);
                         var selectedUploadedFiles = <FFUploadedFile>[];
 
                         var downloadUrls = <String>[];
@@ -128,15 +141,16 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                               .map((u) => u!)
                               .toList();
                         } finally {
-                          _model.isDataUploading1 = false;
+                          _model.isDataUploading_uploadDataA5p = false;
                         }
                         if (selectedUploadedFiles.length ==
                                 selectedMedia.length &&
                             downloadUrls.length == selectedMedia.length) {
                           safeSetState(() {
-                            _model.uploadedLocalFile1 =
+                            _model.uploadedLocalFile_uploadDataA5p =
                                 selectedUploadedFiles.first;
-                            _model.uploadedFileUrl1 = downloadUrls.first;
+                            _model.uploadedFileUrl_uploadDataA5p =
+                                downloadUrls.first;
                           });
                         } else {
                           safeSetState(() {});
@@ -147,11 +161,11 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                       logFirebaseEvent('Stack_backend_call');
 
                       await currentUserReference!.update(createUsersRecordData(
-                        photoUrl: _model.uploadedFileUrl1,
+                        photoUrl: _model.uploadedFileUrl_uploadDataA5p,
                       ));
                     },
                     child: Stack(
-                      alignment: const AlignmentDirectional(-1.0, 1.0),
+                      alignment: AlignmentDirectional(-1.0, 1.0),
                       children: [
                         Container(
                           width: 150.0,
@@ -162,7 +176,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: Image.network(
-                                _model.uploadedFileUrl2,
+                                _model.uploadedFileUrl_uploadDataA5p,
                               ).image,
                             ),
                             shape: BoxShape.circle,
@@ -183,60 +197,8 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                             color: FlutterFlowTheme.of(context).info,
                             size: 30.0,
                           ),
-                          onPressed: () async {
-                            logFirebaseEvent(
-                                'PROFILE_CREATION_PAGE_add_ICN_ON_TAP');
-                            logFirebaseEvent(
-                                'IconButton_upload_media_to_firebase');
-                            final selectedMedia =
-                                await selectMediaWithSourceBottomSheet(
-                              context: context,
-                              allowPhoto: true,
-                            );
-                            if (selectedMedia != null &&
-                                selectedMedia.every((m) => validateFileFormat(
-                                    m.storagePath, context))) {
-                              safeSetState(
-                                  () => _model.isDataUploading2 = true);
-                              var selectedUploadedFiles = <FFUploadedFile>[];
-
-                              var downloadUrls = <String>[];
-                              try {
-                                selectedUploadedFiles = selectedMedia
-                                    .map((m) => FFUploadedFile(
-                                          name: m.storagePath.split('/').last,
-                                          bytes: m.bytes,
-                                          height: m.dimensions?.height,
-                                          width: m.dimensions?.width,
-                                          blurHash: m.blurHash,
-                                        ))
-                                    .toList();
-
-                                downloadUrls = (await Future.wait(
-                                  selectedMedia.map(
-                                    (m) async => await uploadData(
-                                        m.storagePath, m.bytes),
-                                  ),
-                                ))
-                                    .where((u) => u != null)
-                                    .map((u) => u!)
-                                    .toList();
-                              } finally {
-                                _model.isDataUploading2 = false;
-                              }
-                              if (selectedUploadedFiles.length ==
-                                      selectedMedia.length &&
-                                  downloadUrls.length == selectedMedia.length) {
-                                safeSetState(() {
-                                  _model.uploadedLocalFile2 =
-                                      selectedUploadedFiles.first;
-                                  _model.uploadedFileUrl2 = downloadUrls.first;
-                                });
-                              } else {
-                                safeSetState(() {});
-                                return;
-                              }
-                            }
+                          onPressed: () {
+                            print('IconButton pressed ...');
                           },
                         ),
                       ],
@@ -248,14 +210,14 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        SizedBox(
+                        Container(
                           width: 350.0,
                           child: TextFormField(
                             controller: _model.nameTextController,
                             focusNode: _model.nameFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
                               '_model.nameTextController',
-                              const Duration(milliseconds: 2000),
+                              Duration(milliseconds: 2000),
                               () => safeSetState(() {}),
                             ),
                             autofocus: false,
@@ -267,21 +229,37 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 15.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                               hintText: 'Name...',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelLarge
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .fontStyle,
+                                    ),
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .fontStyle,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -292,7 +270,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -315,7 +293,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              contentPadding: const EdgeInsets.all(17.0),
+                              contentPadding: EdgeInsets.all(17.0),
                               suffixIcon:
                                   _model.nameTextController!.text.isNotEmpty
                                       ? InkWell(
@@ -335,10 +313,18 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
                                 ),
                             keyboardType: TextInputType.name,
                             cursorColor:
@@ -352,7 +338,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                             logFirebaseEvent(
                                 'PROFILE_CREATION_PAGE_Birthday_ON_TAP');
                             logFirebaseEvent('Birthday_date_time_picker');
-                            final datePickedDate = await showDatePicker(
+                            final _datePickedDate = await showDatePicker(
                               context: context,
                               initialDate: getCurrentTimestamp,
                               firstDate: DateTime(1900),
@@ -368,10 +354,19 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                                   headerTextStyle: FlutterFlowTheme.of(context)
                                       .headlineLarge
                                       .override(
-                                        fontFamily: 'Inter Tight',
+                                        font: GoogleFonts.interTight(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineLarge
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 32.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .headlineLarge
+                                            .fontStyle,
                                       ),
                                   pickerBackgroundColor:
                                       FlutterFlowTheme.of(context)
@@ -389,13 +384,17 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                               },
                             );
 
-                            if (datePickedDate != null) {
+                            if (_datePickedDate != null) {
                               safeSetState(() {
                                 _model.datePicked = DateTime(
-                                  datePickedDate.year,
-                                  datePickedDate.month,
-                                  datePickedDate.day,
+                                  _datePickedDate.year,
+                                  _datePickedDate.month,
+                                  _datePickedDate.day,
                                 );
+                              });
+                            } else if (_model.datePicked != null) {
+                              safeSetState(() {
+                                _model.datePicked = getCurrentTimestamp;
                               });
                             }
                           },
@@ -406,19 +405,27 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                           options: FFButtonOptions(
                             width: 350.0,
                             height: 50.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: Colors.white,
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                             elevation: 0.0,
                             borderSide: BorderSide(
@@ -428,14 +435,14 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                             borderRadius: BorderRadius.circular(20.0),
                           ),
                         ),
-                        SizedBox(
+                        Container(
                           width: 350.0,
                           child: TextFormField(
                             controller: _model.bioTextController,
                             focusNode: _model.bioFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
                               '_model.bioTextController',
-                              const Duration(milliseconds: 2000),
+                              Duration(milliseconds: 2000),
                               () => safeSetState(() {}),
                             ),
                             autofocus: false,
@@ -446,21 +453,37 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 15.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                               hintText: 'Bio...',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -471,7 +494,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -494,7 +517,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              contentPadding: const EdgeInsets.all(17.0),
+                              contentPadding: EdgeInsets.all(17.0),
                               suffixIcon:
                                   _model.bioTextController!.text.isNotEmpty
                                       ? InkWell(
@@ -514,10 +537,18 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
                                 ),
                             maxLines: null,
                             cursorColor:
@@ -549,10 +580,18 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: FlutterFlowTheme.of(context).info,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                             elevation: 0.0,
                             borderSide: BorderSide(
@@ -562,7 +601,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                             borderRadius: BorderRadius.circular(20.0),
                           ),
                         ),
-                      ].divide(const SizedBox(height: 12.0)),
+                      ].divide(SizedBox(height: 12.0)),
                     ),
                   ),
                   FFButtonWidget(
@@ -574,7 +613,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                           !_model.formKey.currentState!.validate()) {
                         return;
                       }
-                      if (_model.placePickerValue == const FFPlace()) {
+                      if (_model.placePickerValue == FFPlace()) {
                         return;
                       }
                       logFirebaseEvent('Button_backend_call');
@@ -583,15 +622,15 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                         displayName: _model.nameTextController.text,
                         birthday: _model.datePicked,
                         bio: _model.bioTextController.text,
-                        photoUrl: _model.uploadedFileUrl2,
+                        photoUrl: _model.uploadedFileUrl_uploadDataA5p,
                         location: _model.placePickerValue.latLng,
                       ));
                       logFirebaseEvent('Button_navigate_to');
 
                       context.goNamed(
-                        'Home',
+                        HomeWidget.routeName,
                         extra: <String, dynamic>{
-                          kTransitionInfoKey: const TransitionInfo(
+                          kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
                             transitionType: PageTransitionType.fade,
                             duration: Duration(milliseconds: 0),
@@ -603,17 +642,25 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                     options: FFButtonOptions(
                       width: 350.0,
                       height: 50.0,
-                      padding: const EdgeInsets.all(15.0),
+                      padding: EdgeInsets.all(15.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).tertiary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Inter Tight',
+                                font: GoogleFonts.interTight(
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
                                 color: Colors.white,
                                 fontSize: 20.0,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.bold,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .fontStyle,
                               ),
                       elevation: 0.0,
                       borderSide: BorderSide(
@@ -622,7 +669,7 @@ class _ProfileCreationWidgetState extends State<ProfileCreationWidget> {
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                   ),
-                ].divide(const SizedBox(height: 20.0)).around(const SizedBox(height: 20.0)),
+                ].divide(SizedBox(height: 20.0)).around(SizedBox(height: 20.0)),
               ),
             ),
           ),

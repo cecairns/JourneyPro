@@ -12,6 +12,7 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'edit_expense_model.dart';
 export 'edit_expense_model.dart';
@@ -23,6 +24,9 @@ class EditExpenseWidget extends StatefulWidget {
   });
 
   final ExpensesRecord? expense;
+
+  static String routeName = 'EditExpense';
+  static String routePath = '/editExpense';
 
   @override
   State<EditExpenseWidget> createState() => _EditExpenseWidgetState();
@@ -100,17 +104,17 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: Text(
                             'Edit Expense',
@@ -118,24 +122,32 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 30.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
                                 ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
-                          child: SizedBox(
+                          child: Container(
                             width: 350.0,
                             child: TextFormField(
                               controller: _model.nameTextController,
                               focusNode: _model.nameFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
                                 '_model.nameTextController',
-                                const Duration(milliseconds: 2000),
+                                Duration(milliseconds: 2000),
                                 () => safeSetState(() {}),
                               ),
                               autofocus: false,
@@ -146,21 +158,37 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       fontSize: 15.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
                                     ),
                                 hintText: 'Purchaser...',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
                                       fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -171,7 +199,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -213,10 +241,18 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                               cursorColor:
                                   FlutterFlowTheme.of(context).primaryText,
@@ -226,16 +262,16 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
-                          child: SizedBox(
+                          child: Container(
                             width: 350.0,
                             child: TextFormField(
                               controller: _model.descTextController,
                               focusNode: _model.descFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
                                 '_model.descTextController',
-                                const Duration(milliseconds: 2000),
+                                Duration(milliseconds: 2000),
                                 () => safeSetState(() {}),
                               ),
                               autofocus: false,
@@ -246,21 +282,37 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       fontSize: 15.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
                                     ),
                                 hintText: 'Description...',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
                                       fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -271,7 +323,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -313,10 +365,18 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                               cursorColor:
                                   FlutterFlowTheme.of(context).primaryText,
@@ -326,13 +386,13 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               logFirebaseEvent('EDIT_EXPENSE_PAGE_Date_ON_TAP');
                               logFirebaseEvent('Date_date_time_picker');
-                              final datePickedDate = await showDatePicker(
+                              final _datePickedDate = await showDatePicker(
                                 context: context,
                                 initialDate:
                                     (widget.expense?.date ?? DateTime.now()),
@@ -350,10 +410,20 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                         FlutterFlowTheme.of(context)
                                             .headlineLarge
                                             .override(
-                                              fontFamily: 'Inter Tight',
+                                              font: GoogleFonts.interTight(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineLarge
+                                                        .fontStyle,
+                                              ),
                                               fontSize: 32.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineLarge
+                                                      .fontStyle,
                                             ),
                                     pickerBackgroundColor:
                                         FlutterFlowTheme.of(context)
@@ -373,13 +443,17 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                 },
                               );
 
-                              if (datePickedDate != null) {
+                              if (_datePickedDate != null) {
                                 safeSetState(() {
                                   _model.datePicked = DateTime(
-                                    datePickedDate.year,
-                                    datePickedDate.month,
-                                    datePickedDate.day,
+                                    _datePickedDate.year,
+                                    _datePickedDate.month,
+                                    _datePickedDate.day,
                                   );
+                                });
+                              } else if (_model.datePicked != null) {
+                                safeSetState(() {
+                                  _model.datePicked = widget.expense?.date;
                                 });
                               }
                             },
@@ -390,19 +464,27 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                             options: FFButtonOptions(
                               width: 350.0,
                               height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
                                     color: Colors.white,
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
                                   ),
                               elevation: 0.0,
                               borderSide: BorderSide(
@@ -414,17 +496,17 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 5.0),
                           child: Container(
-                            child: SizedBox(
+                            child: Container(
                               width: 350.0,
                               child: TextFormField(
                                 controller: _model.costTextController,
                                 focusNode: _model.costFocusNode,
                                 onChanged: (_) => EasyDebounce.debounce(
                                   '_model.costTextController',
-                                  const Duration(milliseconds: 2000),
+                                  Duration(milliseconds: 2000),
                                   () async {
                                     logFirebaseEvent(
                                         'EDIT_EXPENSE_Cost_ON_TEXTFIELD_CHANGE');
@@ -442,23 +524,41 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        font: GoogleFonts.inter(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                         fontSize: 15.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
                                       ),
                                   hintText: 'Cost...',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        font: GoogleFonts.inter(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 20.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -469,7 +569,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                     borderRadius: BorderRadius.circular(20.0),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
@@ -518,10 +618,18 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primaryText,
@@ -532,7 +640,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: FlutterFlowDropDown<String>(
                             controller:
@@ -541,7 +649,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                               _model.curConvFromTextValue ??=
                                   widget.expense?.currency,
                             ),
-                            options: const [
+                            options: [
                               'USD (US Dollar)',
                               'EUR (Euro)',
                               'JPY (Yen)',
@@ -568,10 +676,18 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
                                 ),
                             hintText: 'Select Currency...',
                             icon: Icon(
@@ -586,7 +702,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                 FlutterFlowTheme.of(context).primaryText,
                             borderWidth: 1.0,
                             borderRadius: 20.0,
-                            margin: const EdgeInsetsDirectional.fromSTEB(
+                            margin: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 0.0),
                             hidesUnderline: true,
                             isOverButton: false,
@@ -595,7 +711,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 5.0),
                           child: Text(
                             'If you would like to convert the currency:',
@@ -603,20 +719,28 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 15.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
                                 ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 5.0),
                           child: FlutterFlowDropDown<String>(
                             controller: _model.curConvToTextValueController ??=
                                 FormFieldController<String>(null),
-                            options: const [
+                            options: [
                               'USD (US Dollar)',
                               'EUR (Euro)',
                               'JPY (Yen)',
@@ -634,10 +758,18 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
                                 ),
                             hintText: 'Select Currency...',
                             icon: Icon(
@@ -652,7 +784,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                 FlutterFlowTheme.of(context).primaryText,
                             borderWidth: 1.0,
                             borderRadius: 20.0,
-                            margin: const EdgeInsetsDirectional.fromSTEB(
+                            margin: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 0.0),
                             hidesUnderline: true,
                             isOverButton: false,
@@ -661,7 +793,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -687,19 +819,27 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                             options: FFButtonOptions(
                               width: 350.0,
                               height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
                                     color: Colors.white,
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
                                   ),
                               elevation: 0.0,
                               borderSide: BorderSide(
@@ -711,17 +851,17 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 5.0),
                           child: Container(
-                            child: SizedBox(
+                            child: Container(
                               width: 350.0,
                               child: TextFormField(
                                 controller: _model.debtTextController,
                                 focusNode: _model.debtFocusNode,
                                 onChanged: (_) => EasyDebounce.debounce(
                                   '_model.debtTextController',
-                                  const Duration(milliseconds: 2000),
+                                  Duration(milliseconds: 2000),
                                   () => safeSetState(() {}),
                                 ),
                                 autofocus: false,
@@ -732,21 +872,39 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        font: GoogleFonts.inter(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                         fontSize: 15.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
                                       ),
                                   hintText: 'Add name of who owes...',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        font: GoogleFonts.inter(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 20.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -757,7 +915,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                     borderRadius: BorderRadius.circular(20.0),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
@@ -799,10 +957,18 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primaryText,
@@ -813,7 +979,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 5.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -843,19 +1009,27 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                             options: FFButtonOptions(
                               width: 350.0,
                               height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
                                     color: Colors.white,
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
                                   ),
                               elevation: 0.0,
                               borderSide: BorderSide(
@@ -867,7 +1041,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: FlutterFlowDropDown<String>(
                             controller: _model.userListValueController ??=
@@ -880,10 +1054,18 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
                                 ),
                             hintText: 'View People Who Owe',
                             icon: Icon(
@@ -898,7 +1080,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                 FlutterFlowTheme.of(context).primaryText,
                             borderWidth: 1.0,
                             borderRadius: 20.0,
-                            margin: const EdgeInsetsDirectional.fromSTEB(
+                            margin: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 0.0),
                             hidesUnderline: true,
                             isOverButton: false,
@@ -907,7 +1089,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -927,8 +1109,8 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                               if (selectedMedia != null &&
                                   selectedMedia.every((m) => validateFileFormat(
                                       m.storagePath, context))) {
-                                safeSetState(
-                                    () => _model.isDataUploading = true);
+                                safeSetState(() => _model
+                                    .isDataUploading_updateData2vh = true);
                                 var selectedUploadedFiles = <FFUploadedFile>[];
 
                                 var downloadUrls = <String>[];
@@ -953,16 +1135,17 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                       .map((u) => u!)
                                       .toList();
                                 } finally {
-                                  _model.isDataUploading = false;
+                                  _model.isDataUploading_updateData2vh = false;
                                 }
                                 if (selectedUploadedFiles.length ==
                                         selectedMedia.length &&
                                     downloadUrls.length ==
                                         selectedMedia.length) {
                                   safeSetState(() {
-                                    _model.uploadedLocalFile =
+                                    _model.uploadedLocalFile_updateData2vh =
                                         selectedUploadedFiles.first;
-                                    _model.uploadedFileUrl = downloadUrls.first;
+                                    _model.uploadedFileUrl_updateData2vh =
+                                        downloadUrls.first;
                                   });
                                 } else {
                                   safeSetState(() {});
@@ -974,7 +1157,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
 
                               await widget.expense!.reference
                                   .update(createExpensesRecordData(
-                                receipts: _model.uploadedFileUrl,
+                                receipts: _model.uploadedFileUrl_updateData2vh,
                               ));
                             },
                             child: Container(
@@ -986,7 +1169,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: Image.network(
-                                    _model.uploadedFileUrl,
+                                    _model.uploadedFileUrl_updateData2vh,
                                   ).image,
                                 ),
                                 borderRadius: BorderRadius.circular(20.0),
@@ -997,17 +1180,26 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                 ),
                               ),
                               child: Align(
-                                alignment: const AlignmentDirectional(0.0, -1.0),
+                                alignment: AlignmentDirectional(0.0, -1.0),
                                 child: Text(
                                   'Click here to edit receipt',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        font: GoogleFonts.inter(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
                                         fontSize: 20.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
                                       ),
                                 ),
                               ),
@@ -1015,7 +1207,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -1042,7 +1234,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                                           .primaryText,
                                     ),
                                   ),
-                                  duration: const Duration(milliseconds: 4000),
+                                  duration: Duration(milliseconds: 4000),
                                   backgroundColor:
                                       FlutterFlowTheme.of(context).secondary,
                                 ),
@@ -1057,19 +1249,27 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                             options: FFButtonOptions(
                               width: 350.0,
                               height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).tertiary,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
                                     color: Colors.white,
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
                                   ),
                               elevation: 0.0,
                               borderSide: BorderSide(
@@ -1080,7 +1280,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
                             ),
                           ),
                         ),
-                      ].addToStart(const SizedBox(height: 20.0)),
+                      ].addToStart(SizedBox(height: 20.0)),
                     ),
                   ),
                 ),
@@ -1088,7 +1288,7 @@ class _EditExpenseWidgetState extends State<EditExpenseWidget> {
               wrapWithModel(
                 model: _model.bottomBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const BottomBarWidget(),
+                child: BottomBarWidget(),
               ),
             ],
           ),

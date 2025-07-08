@@ -38,10 +38,10 @@ class EditExpenseModel extends FlutterFlowModel<EditExpenseWidget> {
   // State field(s) for UserList widget.
   String? userListValue;
   FormFieldController<String>? userListValueController;
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading_updateData2vh = false;
+  FFUploadedFile uploadedLocalFile_updateData2vh =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
+  String uploadedFileUrl_updateData2vh = '';
 
   // Model for BottomBar component.
   late BottomBarModel bottomBarModel;

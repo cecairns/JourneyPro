@@ -1,4 +1,5 @@
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'profile_creation_widget.dart' show ProfileCreationWidget;
 import 'package:flutter/material.dart';
 
@@ -6,15 +7,10 @@ class ProfileCreationModel extends FlutterFlowModel<ProfileCreationWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  bool isDataUploading1 = false;
-  FFUploadedFile uploadedLocalFile1 =
+  bool isDataUploading_uploadDataA5p = false;
+  FFUploadedFile uploadedLocalFile_uploadDataA5p =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl1 = '';
-
-  bool isDataUploading2 = false;
-  FFUploadedFile uploadedLocalFile2 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl2 = '';
+  String uploadedFileUrl_uploadDataA5p = '';
 
   // State field(s) for Name widget.
   FocusNode? nameFocusNode;
@@ -42,7 +38,7 @@ class ProfileCreationModel extends FlutterFlowModel<ProfileCreationWidget> {
   }
 
   // State field(s) for PlacePicker widget.
-  FFPlace placePickerValue = const FFPlace();
+  FFPlace placePickerValue = FFPlace();
 
   @override
   void initState(BuildContext context) {

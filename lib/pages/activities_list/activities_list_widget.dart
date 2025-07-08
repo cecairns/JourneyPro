@@ -6,7 +6,9 @@ import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'activities_list_model.dart';
 export 'activities_list_model.dart';
 
@@ -17,6 +19,9 @@ class ActivitiesListWidget extends StatefulWidget {
   });
 
   final TripsRecord? trips;
+
+  static String routeName = 'ActivitiesList';
+  static String routePath = '/activitiesList';
 
   @override
   State<ActivitiesListWidget> createState() => _ActivitiesListWidgetState();
@@ -69,11 +74,11 @@ class _ActivitiesListWidgetState extends State<ActivitiesListWidget> {
               wrapWithModel(
                 model: _model.topBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const TopBarWidget(),
+                child: TopBarWidget(),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -83,58 +88,148 @@ class _ActivitiesListWidgetState extends State<ActivitiesListWidget> {
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 30.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                         ),
-                        FlutterFlowCalendar(
-                          color: FlutterFlowTheme.of(context).primary,
-                          iconColor: FlutterFlowTheme.of(context).secondaryText,
-                          weekFormat: false,
-                          weekStartsMonday: false,
-                          initialDate: widget.trips?.startDate,
-                          rowHeight: 48.0,
-                          onChange: (DateTimeRange? newSelectedDate) {
-                            safeSetState(() =>
-                                _model.calendarSelectedDay = newSelectedDate);
-                          },
-                          titleStyle:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Inter Tight',
-                                    letterSpacing: 0.0,
+                        Container(
+                          width: 350.0,
+                          decoration: BoxDecoration(),
+                          child: FlutterFlowCalendar(
+                            color: FlutterFlowTheme.of(context).primary,
+                            iconColor:
+                                FlutterFlowTheme.of(context).secondaryText,
+                            weekFormat: false,
+                            weekStartsMonday: false,
+                            initialDate: widget.trips?.startDate,
+                            rowHeight: 48.0,
+                            onChange: (DateTimeRange? newSelectedDate) {
+                              safeSetState(() =>
+                                  _model.calendarSelectedDay = newSelectedDate);
+                            },
+                            titleStyle: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .fontStyle,
                                   ),
-                          dayOfWeekStyle:
-                              FlutterFlowTheme.of(context).bodyLarge.override(
-                                    fontFamily: 'Inter',
-                                    letterSpacing: 0.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleLarge
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleLarge
+                                      .fontStyle,
+                                ),
+                            dayOfWeekStyle:
+                                FlutterFlowTheme.of(context).bodyLarge.override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .fontStyle,
+                                      ),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontStyle,
+                                    ),
+                            dateStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
-                          dateStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
-                                    letterSpacing: 0.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
+                                ),
+                            selectedDateStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
                                   ),
-                          selectedDateStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Inter Tight',
-                                    letterSpacing: 0.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                            inactiveDateStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
-                          inactiveDateStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Inter',
-                                    letterSpacing: 0.0,
-                                  ),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
+                                ),
+                          ),
                         ),
                         Text(
                           'Activities by Day',
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 25.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                         ),
                         StreamBuilder<List<ActivitiesRecord>>(
@@ -177,11 +272,11 @@ class _ActivitiesListWidgetState extends State<ActivitiesListWidget> {
                               scrollDirection: Axis.vertical,
                               itemCount: listViewActivitiesRecordList.length,
                               separatorBuilder: (_, __) =>
-                                  const SizedBox(height: 20.0),
+                                  SizedBox(height: 20.0),
                               itemBuilder: (context, listViewIndex) {
                                 final listViewActivitiesRecord =
                                     listViewActivitiesRecordList[listViewIndex];
-                                return SizedBox(
+                                return Container(
                                   width: 350.0,
                                   child: TodoWidget(
                                     key: Key(
@@ -198,10 +293,18 @@ class _ActivitiesListWidgetState extends State<ActivitiesListWidget> {
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 25.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                         ),
                         StreamBuilder<List<ActivitiesRecord>>(
@@ -241,11 +344,11 @@ class _ActivitiesListWidgetState extends State<ActivitiesListWidget> {
                               scrollDirection: Axis.vertical,
                               itemCount: listViewActivitiesRecordList.length,
                               separatorBuilder: (_, __) =>
-                                  const SizedBox(height: 20.0),
+                                  SizedBox(height: 20.0),
                               itemBuilder: (context, listViewIndex) {
                                 final listViewActivitiesRecord =
                                     listViewActivitiesRecordList[listViewIndex];
-                                return SizedBox(
+                                return Container(
                                   width: 350.0,
                                   child: TodoWidget(
                                     key: Key(
@@ -264,7 +367,7 @@ class _ActivitiesListWidgetState extends State<ActivitiesListWidget> {
                             logFirebaseEvent('Button_navigate_to');
 
                             context.pushNamed(
-                              'AddActivity',
+                              AddActivityWidget.routeName,
                               queryParameters: {
                                 'trips': serializeParam(
                                   widget.trips,
@@ -273,7 +376,7 @@ class _ActivitiesListWidgetState extends State<ActivitiesListWidget> {
                               }.withoutNulls,
                               extra: <String, dynamic>{
                                 'trips': widget.trips,
-                                kTransitionInfoKey: const TransitionInfo(
+                                kTransitionInfoKey: TransitionInfo(
                                   hasTransition: true,
                                   transitionType: PageTransitionType.fade,
                                   duration: Duration(milliseconds: 0),
@@ -285,18 +388,26 @@ class _ActivitiesListWidgetState extends State<ActivitiesListWidget> {
                           options: FFButtonOptions(
                             width: 350.0,
                             height: 50.0,
-                            padding: const EdgeInsets.all(15.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsets.all(15.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: Colors.white,
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                             borderSide: BorderSide(
                               color: FlutterFlowTheme.of(context).primaryText,
@@ -306,8 +417,8 @@ class _ActivitiesListWidgetState extends State<ActivitiesListWidget> {
                           ),
                         ),
                       ]
-                          .divide(const SizedBox(height: 20.0))
-                          .around(const SizedBox(height: 20.0)),
+                          .divide(SizedBox(height: 20.0))
+                          .around(SizedBox(height: 20.0)),
                     ),
                   ),
                 ),
@@ -315,7 +426,7 @@ class _ActivitiesListWidgetState extends State<ActivitiesListWidget> {
               wrapWithModel(
                 model: _model.bottomBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const BottomBarWidget(),
+                child: BottomBarWidget(),
               ),
             ],
           ),

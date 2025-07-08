@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'n_p_s_survey_model.dart';
 export 'n_p_s_survey_model.dart';
 
@@ -45,7 +46,7 @@ class _NPSSurveyWidgetState extends State<NPSSurveyWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: 350.0,
         decoration: BoxDecoration(
@@ -57,7 +58,7 @@ class _NPSSurveyWidgetState extends State<NPSSurveyWidget> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: EdgeInsets.all(15.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -65,28 +66,41 @@ class _NPSSurveyWidgetState extends State<NPSSurveyWidget> {
                 'How likely are you to recommend JourneyPro to a friend?',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).headlineSmall.override(
-                      fontFamily: 'Inter Tight',
+                      font: GoogleFonts.interTight(
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineSmall
+                            .fontStyle,
+                      ),
                       fontSize: 25.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineSmall.fontStyle,
                     ),
               ),
               Text(
                 'Your feedback helps us improve our service!',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Inter',
+                      font: GoogleFonts.inter(
+                        fontWeight: FontWeight.w500,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      ),
                       color: FlutterFlowTheme.of(context).secondaryText,
                       fontSize: 15.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w500,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                     ),
               ),
-              SizedBox(
+              Container(
                 width: double.infinity,
                 child: Slider(
                   activeColor: FlutterFlowTheme.of(context).primary,
-                  inactiveColor: const Color(0x33000000),
+                  inactiveColor: Color(0x33000000),
                   min: 0.0,
                   max: 10.0,
                   value: _model.sliderValue ??= 5.0,
@@ -104,33 +118,47 @@ class _NPSSurveyWidgetState extends State<NPSSurveyWidget> {
                   Text(
                     'Not likely',
                     style: FlutterFlowTheme.of(context).bodySmall.override(
-                          fontFamily: 'Inter',
+                          font: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodySmall
+                                .fontStyle,
+                          ),
                           color: FlutterFlowTheme.of(context).secondaryText,
                           fontSize: 15.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w500,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodySmall.fontStyle,
                         ),
                   ),
                   Text(
                     'Very likely',
                     style: FlutterFlowTheme.of(context).bodySmall.override(
-                          fontFamily: 'Inter',
+                          font: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodySmall
+                                .fontStyle,
+                          ),
                           color: FlutterFlowTheme.of(context).secondaryText,
                           fontSize: 15.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w500,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodySmall.fontStyle,
                         ),
                   ),
                 ],
               ),
-              SizedBox(
+              Container(
                 width: double.infinity,
                 child: TextFormField(
                   controller: _model.textController,
                   focusNode: _model.textFieldFocusNode,
                   onChanged: (_) => EasyDebounce.debounce(
                     '_model.textController',
-                    const Duration(milliseconds: 2000),
+                    Duration(milliseconds: 2000),
                     () => safeSetState(() {}),
                   ),
                   autofocus: false,
@@ -140,11 +168,18 @@ class _NPSSurveyWidgetState extends State<NPSSurveyWidget> {
                     alignLabelWithHint: false,
                     hintText: 'What could we improve?',
                     hintStyle: FlutterFlowTheme.of(context).bodyLarge.override(
-                          fontFamily: 'Inter',
+                          font: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyLarge
+                                .fontStyle,
+                          ),
                           color: FlutterFlowTheme.of(context).secondaryText,
                           fontSize: 20.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w500,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -154,21 +189,21 @@ class _NPSSurveyWidgetState extends State<NPSSurveyWidget> {
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Color(0x00000000),
                         width: 1.0,
                       ),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     errorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Color(0x00000000),
                         width: 1.0,
                       ),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     focusedErrorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Color(0x00000000),
                         width: 1.0,
                       ),
@@ -176,7 +211,7 @@ class _NPSSurveyWidgetState extends State<NPSSurveyWidget> {
                     ),
                     filled: true,
                     fillColor: FlutterFlowTheme.of(context).primaryBackground,
-                    contentPadding: const EdgeInsets.all(17.0),
+                    contentPadding: EdgeInsets.all(17.0),
                     suffixIcon: _model.textController!.text.isNotEmpty
                         ? InkWell(
                             onTap: () async {
@@ -192,10 +227,16 @@ class _NPSSurveyWidgetState extends State<NPSSurveyWidget> {
                         : null,
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        font: GoogleFonts.inter(
+                          fontWeight: FontWeight.w500,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
                         fontSize: 20.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.w500,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
                   maxLines: null,
                   validator:
@@ -217,16 +258,22 @@ class _NPSSurveyWidgetState extends State<NPSSurveyWidget> {
                 options: FFButtonOptions(
                   width: double.infinity,
                   height: 50.0,
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Inter Tight',
+                        font: GoogleFonts.interTight(
+                          fontWeight: FontWeight.bold,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                        ),
                         color: FlutterFlowTheme.of(context).info,
                         fontSize: 20.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).titleSmall.fontStyle,
                       ),
                   elevation: 0.0,
                   borderSide: BorderSide(
@@ -236,7 +283,7 @@ class _NPSSurveyWidgetState extends State<NPSSurveyWidget> {
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
-            ].divide(const SizedBox(height: 20.0)),
+            ].divide(SizedBox(height: 20.0)),
           ),
         ),
       ),

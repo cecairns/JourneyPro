@@ -1,4 +1,5 @@
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'signup_and_login_widget.dart' show SignupAndLoginWidget;
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,8 @@ class SignupAndLoginModel extends FlutterFlowModel<SignupAndLoginWidget> {
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
+  int get tabBarPreviousIndex =>
+      tabBarController != null ? tabBarController!.previousIndex : 0;
 
   // State field(s) for sign-upEmail widget.
   FocusNode? signUpEmailFocusNode;

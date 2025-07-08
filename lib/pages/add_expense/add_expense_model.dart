@@ -64,15 +64,15 @@ class AddExpenseModel extends FlutterFlowModel<AddExpenseWidget> {
   // State field(s) for UserList widget.
   String? userListValue;
   FormFieldController<String>? userListValueController;
-  bool isDataUploading1 = false;
-  FFUploadedFile uploadedLocalFile1 =
+  bool isDataUploading_uploadDataYbv = false;
+  FFUploadedFile uploadedLocalFile_uploadDataYbv =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl1 = '';
+  String uploadedFileUrl_uploadDataYbv = '';
 
-  bool isDataUploading2 = false;
-  FFUploadedFile uploadedLocalFile2 =
+  bool isDataUploading_addReceipts = false;
+  FFUploadedFile uploadedLocalFile_addReceipts =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl2 = '';
+  String uploadedFileUrl_addReceipts = '';
 
   // Model for BottomBar component.
   late BottomBarModel bottomBarModel;

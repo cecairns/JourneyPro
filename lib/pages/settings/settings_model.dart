@@ -2,6 +2,7 @@ import '/components/bottom_bar/bottom_bar_widget.dart';
 import '/components/top_bar/top_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/instant_timer.dart';
+import '/index.dart';
 import 'settings_widget.dart' show SettingsWidget;
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class SettingsModel extends FlutterFlowModel<SettingsWidget> {
   bool? switchValue;
   InstantTimer? LocationTimer;
   // State field(s) for PlacePicker widget.
-  FFPlace placePickerValue = const FFPlace();
+  FFPlace placePickerValue = FFPlace();
   // Model for BottomBar component.
   late BottomBarModel bottomBarModel;
 

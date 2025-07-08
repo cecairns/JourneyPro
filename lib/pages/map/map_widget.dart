@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'map_model.dart';
 export 'map_model.dart';
 
@@ -16,6 +17,9 @@ class MapWidget extends StatefulWidget {
   });
 
   final TripsRecord? tripDetails;
+
+  static String routeName = 'Map';
+  static String routePath = '/map';
 
   @override
   State<MapWidget> createState() => _MapWidgetState();
@@ -95,12 +99,12 @@ class _MapWidgetState extends State<MapWidget> {
                   wrapWithModel(
                     model: _model.topBarModel,
                     updateCallback: () => safeSetState(() {}),
-                    child: const TopBarWidget(),
+                    child: TopBarWidget(),
                   ),
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -111,25 +115,33 @@ class _MapWidgetState extends State<MapWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 30.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                             ),
                             Container(
                               width: 350.0,
-                              height: 500.0,
+                              height: 250.0,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(0.0),
                               ),
                               child: FlutterFlowGoogleMap(
-                                key: const ValueKey('GoogleMap_961i'),
+                                key: ValueKey('GoogleMap_961i'),
                                 controller: _model.googleMapsController,
                                 onCameraIdle: (latLng) =>
                                     _model.googleMapsCenter = latLng,
                                 initialLocation: _model.googleMapsCenter ??=
-                                    const LatLng(0.0, 0.0),
+                                    LatLng(0.0, 0.0),
                                 markers: containerUsersRecordList
                                     .map(
                                       (marker) => FlutterFlowMarker(
@@ -153,8 +165,8 @@ class _MapWidgetState extends State<MapWidget> {
                               ),
                             ),
                           ]
-                              .divide(const SizedBox(height: 20.0))
-                              .around(const SizedBox(height: 20.0)),
+                              .divide(SizedBox(height: 20.0))
+                              .around(SizedBox(height: 20.0)),
                         ),
                       ),
                     ),
@@ -162,7 +174,7 @@ class _MapWidgetState extends State<MapWidget> {
                   wrapWithModel(
                     model: _model.bottomBarModel,
                     updateCallback: () => safeSetState(() {}),
-                    child: const BottomBarWidget(),
+                    child: BottomBarWidget(),
                   ),
                 ],
               ),
