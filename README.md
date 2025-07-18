@@ -15,10 +15,7 @@ It includes features like automatic currency conversion to help users manage the
 - **Expense Tracking**: Record expenses incurred during your trip, categorize them, and track your budget.
 - **Explore Famous Places**: Discover popular attractions and landmarks at your destination to plan your itinerary.
 - **Automatic Currency Converter**: Convert expenses into local currencies automatically based on real-time exchange rates.
-
-## Screenshots
-
-****** TO BE ADDED ******
+- **Collaborative Features**: Group trip planning with shared access to activities, expenses, and other trip details.
 
 ## Technologies Used
 
@@ -43,4 +40,4 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## Acknowledgements
 - Thanks to Flutter and Dart communities for their amazing support and resources
-- APIs: ****** TO BE ADDED ******
+- APIs: Google Map API
